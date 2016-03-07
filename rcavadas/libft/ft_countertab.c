@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_countertab.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:38:50 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 17:57:34 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+t_counter	*ft_countertab(const char *str)
 {
-	int		fd;
-	char	*line;
+	int			i;
+	t_counter	*tab;
+	int			nb;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	i = ft_atoi(str);
+	tab = (t_counter*)malloc(sizeof(t_counter) * i);
+	nb = i;
+	while (i)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		i--;
+		tab[i] = ft_counterinit(nb, i);
 	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+	return (tab);
 }

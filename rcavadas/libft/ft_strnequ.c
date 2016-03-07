@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:52:19 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:04:37 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int		fd;
-	char	*line;
+	unsigned int	i;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	i = 0;
+	if (s1 && s2)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
-	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
+		while (i < n && s1[i] && s2[i])
+		{
+			if (s1[i] != s2[i])
+				return (0);
+			i++;
+		}
+		return (1);
 	}
 	return (0);
 }

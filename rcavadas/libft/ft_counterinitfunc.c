@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_counterinitfunc.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:37:54 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 17:56:42 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+t_functable		ft_counterinitfunc(void)
 {
-	int		fd;
-	char	*line;
+	t_functable func;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
-	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
-	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+	func.carac = ft_strdup("+-/*s%p");
+	func.functab[0] = ft_counteradd;
+	func.functab[1] = ft_counteradd;
+	func.functab[2] = ft_counterdiv;
+	func.functab[3] = ft_countermul;
+	func.functab[4] = ft_counterset;
+	func.functab[5] = ft_countermodul;
+	func.functab[6] = ft_counterpow;
+	return (func);
 }

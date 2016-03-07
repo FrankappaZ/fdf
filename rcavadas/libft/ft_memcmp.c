@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:46:15 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:05:49 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		fd;
-	char	*line;
+	size_t			i;
+	unsigned char	*tmp1;
+	unsigned char	*tmp2;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	i = 0;
+	tmp1 = (unsigned char*)s1;
+	tmp2 = (unsigned char*)s2;
+	while (n != i)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
-	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
+		if (tmp1[i] != tmp2[i])
+			return (tmp1[i] - tmp2[i]);
+		i++;
 	}
 	return (0);
 }

@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:41:14 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 17:58:27 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+int	ft_isalpha(int c)
 {
-	int		fd;
-	char	*line;
-
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
-	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
-	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
+	if (c >= 65 && c <= 90)
+		return (1);
+	else if (c >= 97 && c <= 122)
+		return (1);
 	return (0);
 }

@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:47:49 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:05:26 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		fd;
-	char	*line;
-
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	if (n < 0)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		if (n == -2147483648)
+		{
+			ft_putstr_fd("-2147483648", fd);
+			return ;
+		}
+		n = -n;
+		ft_putchar_fd('-', fd);
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
 	}
 	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+		ft_putchar_fd(n + '0', fd);
 }

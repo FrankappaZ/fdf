@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:53:09 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:04:20 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
+#include <stdio.h>
 
-int main()
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	int		fd;
-	char	*line;
+	char			*tronc;
+	unsigned int	tmpstart;
+	unsigned int	i;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	i = 0;
+	tmpstart = start + len;
+	tronc = (char *)malloc(sizeof(char) * len + 1);
+	if (!tronc || !s)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		if (!tronc)
+			free(tronc);
+		return (NULL);
 	}
-	else
+	while (start != tmpstart)
 	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
+		tronc[i] = s[start];
+		start++;
+		i++;
 	}
-	return (0);
+	tronc[i] = '\0';
+	return (tronc);
 }

@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:45:20 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:06:06 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+void	ft_lstdel(t_list **alst, void (*del)(void*, size_t))
 {
-	int		fd;
-	char	*line;
+	t_list	*tmp;
+	t_list	*nextl;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	if (alst && del && *alst)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		tmp = *alst;
+		while (tmp)
+		{
+			nextl = tmp->next;
+			ft_lstdelone(&tmp, del);
+			tmp = nextl;
+		}
+		*alst = NULL;
 	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
 }

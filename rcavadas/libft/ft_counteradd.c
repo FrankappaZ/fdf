@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_counteradd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:36:54 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 17:55:26 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+t_counter	ft_counteradd(t_counter cnt, int val, char c)
 {
-	int		fd;
-	char	*line;
-
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	if (c == '+')
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		cnt.value = cnt.value + val;
 	}
 	else
 	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
+		cnt.value = cnt.value - val;
 	}
-	return (0);
+	cnt.ope = c;
+	cnt.nbo = cnt.nbo + 1;
+	cnt.num = cnt.num;
+	return (cnt);
 }

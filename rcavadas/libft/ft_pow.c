@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:46:51 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:05:36 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+int	ft_pow(int var, int pow)
 {
-	int		fd;
-	char	*line;
+	int tmp;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	tmp = var;
+	while (--pow)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		var = var * tmp;
 	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+	return (var);
 }

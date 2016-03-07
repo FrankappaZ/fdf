@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:52:13 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:04:35 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+char	*ft_strncpy(char *dest, char const *src, size_t n)
 {
-	int		fd;
-	char	*line;
+	unsigned int	i;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	i = 0;
+	while (src[i] != '\0' && i < n)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		dest[i] = src[i];
+		i++;
 	}
-	else
+	while (i < n)
 	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
+		dest[i] = '\0';
+		i++;
 	}
-	return (0);
+	return (dest);
 }

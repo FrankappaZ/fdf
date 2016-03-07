@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:51:50 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:04:47 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
+#include <stdlib.h>
 
-int main()
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	int		fd;
-	char	*line;
+	char			*tmp;
+	unsigned int	i;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	i = 0;
+	if (!s)
+		return (NULL);
+	tmp = ft_strnew(ft_strlen(s));
+	if (s != NULL && f != NULL && tmp != NULL)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		while (i != ft_strlen(s))
+		{
+			tmp[i] = f(s[i]);
+			i++;
+		}
+		return (tmp);
 	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+	return (NULL);
 }

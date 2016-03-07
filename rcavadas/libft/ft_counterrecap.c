@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_counterrecap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:38:36 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 17:57:20 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+void	ft_counterrecap(t_counter *cnt)
 {
-	int		fd;
-	char	*line;
+	int i;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	i = 0;
+	ft_putstrnb("NUMBER OF VAR : ", cnt[0].num);
+	while (i < cnt[0].num)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		ft_putchar('\n');
+		ft_putstrnb("Check var numero : ", i);
+		ft_putstrnb("Check value      : ", cnt[i].value);
+		ft_putstr("Check last ope   : ");
+		ft_putchar(cnt[i].ope);
+		ft_putchar('\n');
+		ft_putstrnb("Check number of ope : ", cnt[i].nbo);
+		i++;
 	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
 }

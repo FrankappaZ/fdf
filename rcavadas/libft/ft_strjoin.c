@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:51:20 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:04:57 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		fd;
-	char	*line;
+	char	*res;
+	int		i;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
-	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
-	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+	i = 0;
+	if (s1)
+		i += i + ft_strlen(s1);
+	if (s2)
+		i += i + ft_strlen(s2);
+	res = ft_strnew(i);
+	if (!res)
+		return (NULL);
+	if (s1)
+		res = ft_strcat(res, s1);
+	if (s2)
+		res = ft_strcat(res, s2);
+	return (res);
 }

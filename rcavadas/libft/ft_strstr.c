@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:53:03 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:03:57 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	int		fd;
-	char	*line;
+	int	i;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	i = 0;
+	if (s2[i] == '\0')
+		return ((char*)s1);
+	while (s1[i] != '\0')
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		if (ft_strncmp(&s1[i], s2, ft_strlen(s2)) == 0)
+			return ((char*)&s1[i]);
+		i++;
 	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+	return (NULL);
 }

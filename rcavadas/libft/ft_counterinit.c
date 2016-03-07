@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_counterinit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:37:46 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 17:56:29 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+t_counter		ft_counterinit(int nb, int i)
 {
-	int		fd;
-	char	*line;
+	t_counter	cnt;
+	t_functable	funclist;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	if (i == 0)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		funclist = ft_counterinitfunc();
+		cnt.func = funclist;
 	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+	cnt.value = 0;
+	cnt.ope = 'i';
+	cnt.nbo = 0;
+	cnt.num = nb;
+	return (cnt);
 }

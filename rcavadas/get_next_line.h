@@ -6,13 +6,13 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 20:03:04 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 19:01:19 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/03/07 21:58:01 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
+# define BUFF_SIZE 256
 # include <fcntl.h>
 # include <stdlib.h>
 # include <sys/types.h>

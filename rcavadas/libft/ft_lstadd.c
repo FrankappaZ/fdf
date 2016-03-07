@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:45:13 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:06:10 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	int		fd;
-	char	*line;
-
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	if (alst && new)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		new->next = *alst;
+		*alst = new;
 	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
 }

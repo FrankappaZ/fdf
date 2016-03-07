@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:50:56 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:05:03 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
+#include <stdlib.h>
 
-int main()
+char	*ft_strdup(const char *s1)
 {
-	int		fd;
-	char	*line;
+	char	*dest;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	dest = (char*)malloc(sizeof(char) * ft_strlen(s1) + 1);
+	if (dest)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		ft_strcpy(dest, s1);
+		return (dest);
 	}
-	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+	return (NULL);
 }

@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrimchar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:53:19 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:03:47 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+char			*ft_strtrimchar(char const *s, char c)
 {
-	int		fd;
-	char	*line;
+	int		len;
+	int		i;
+	int		j;
+	char	*strim;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	ft_inittwovar(&i, &j);
+	len = ft_strlen(s);
+	while (s[len - 1] == c)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		len--;
+		if (len == 0)
+			return (NULL);
 	}
-	else
+	while (s[i] == c)
 	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
+		len--;
+		i++;
 	}
-	return (0);
+	strim = ft_strnew(len);
+	while (j != len)
+	{
+		strim[j] = s[i];
+		ft_inctwovar(&i, &j);
+	}
+	return (strim);
 }

@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:52:28 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:04:29 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
+#include <stdio.h>
 
-int main()
+char	*ft_strnew(size_t size)
 {
-	int		fd;
-	char	*line;
+	char				*s;
+	unsigned int		i;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	i = 0;
+	s = (char*)malloc(sizeof(char) * (size + 1));
+	if (s)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		while (i < size)
+		{
+			s[i] = '\0';
+			i++;
+		}
+		s[i] = '\0';
+		return (s);
 	}
 	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+		return (NULL);
 }

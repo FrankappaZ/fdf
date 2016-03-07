@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 21:36:13 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/01/20 18:46:33 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/02/10 18:05:43 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/libft.h"
 
-int main()
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int		fd;
-	char	*line;
+	char	*tmpdest;
+	char	*tmpsrc;
+	size_t	i;
 
-	line = NULL;
-	if ((fd = open("text_sample", O_RDONLY)) == -1)
+	i = 0;
+	tmpsrc = (char*)src;
+	tmpdest = (char*)dst;
+	if (tmpdest > tmpsrc)
 	{
-		ft_putstr("Erreur d'ouverture du fichier");
-		return (0);
+		tmpdest += len;
+		tmpsrc += len;
+		while (i < len)
+		{
+			*--tmpdest = *--tmpsrc;
+			i++;
+		}
 	}
 	else
-	{
-		get_next_line(fd, &line);
-		ft_putendl(line);
-	}
-	return (0);
+		while (i < len)
+		{
+			tmpdest[i] = tmpsrc[i];
+			i++;
+		}
+	return (tmpdest);
 }
