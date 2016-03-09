@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 18:01:45 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/09 16:34:39 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/03/09 18:00:59 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ int	main(int argc, char **argv)
 		while ((gnl_value = get_next_line(fd, &line)) == 1)
 		{
 			ft_putendl(line);
-			ft_putstr("Valeur de retour de get_next_line() : ");
-			ft_putnbr(gnl_value);
-			ft_putchar('\n');
+//			ft_putstr("Valeur de retour de get_next_line() : ");
+//			ft_putnbr(gnl_value);
+//			ft_putchar('\n');
 			line_num++;
 		}
-		ft_putstr("BUFF_SIZE : ");
-		ft_putnbr(BUFF_SIZE);
-		ft_putstr("\nNumero de la derniere line affichee : ");
-		ft_putnbr(line_num - 1);
+//		ft_putstr("BUFF_SIZE : ");
+//		ft_putnbr(BUFF_SIZE);
+//		ft_putstr("\nNumero de la derniere line affichee : ");
+//		ft_putnbr(line_num - 1);
 	}
 
 	/* Tester un nouvel appel de get_next_line() apres avoir atteint EOF */
