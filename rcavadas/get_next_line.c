@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 19:07:19 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/10 19:05:41 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/03/10 21:42:13 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,22 @@ int	get_next_line(int const fd, char **line)
 	int			ret;
 	static char	*extract = NULL;
 
-	if (extract)
-	{
-		if (treat_extract(line, &extract))
-			return (1);
-	}
+	if (extract && (treat_extract(line, &extract)))
+		return (1);
 	ret = read(fd, buf, BUFF_SIZE);
 	if (ret > 0)
 	{
 		buf[ret] = '\0';
 		extract = ft_strjoin(extract, buf);
 	}
-	if (ret == 0)
+	if (ret == 0 && (extract && ft_strlen(extract) > 0))
 	{
-		if (ft_strlen(extract) > 0 )
-		{
-			*line = ft_strdup(extract);
-			ft_strdel(&extract);
-			return (1);
-		}
-		else
-			return (0);
+		*line = ft_strdup(extract);
+		ft_strdel(&extract);
+		return (1);
 	}
+	if (ret == 0)
+		return (0);
 	if (ret < 0)
 		return (-1);
 	return (get_next_line(fd, line));
