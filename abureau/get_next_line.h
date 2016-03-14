@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test.c                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abureau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/04 14:36:00 by abureau           #+#    #+#             */
-/*   Updated: 2016/02/04 14:59:50 by abureau          ###   ########.fr       */
+/*   Created: 2016/01/14 15:42:34 by abureau           #+#    #+#             */
+/*   Updated: 2016/03/14 13:28:47 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# define BUFF_SIZE 1
 
-int ft_test(int q)
-{
-	static int test;
-	
-	test += q;
-	ft_putchar('\n');
-	return (test);
-}
+int		get_next_line(int const fd, char **line);
+
+#endif
