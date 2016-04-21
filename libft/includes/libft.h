@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:53:40 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/02/10 16:57:06 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/04/21 14:27:59 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define _LIBFT_H
 # include <string.h>
 # include <stdlib.h>
+# include "./get_next_line.h"
 # define TRUE		1
 # define FALSE		0
 

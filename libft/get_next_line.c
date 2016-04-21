@@ -6,11 +6,11 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 19:07:19 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/14 15:07:20 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/04/21 14:32:20 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "includes/get_next_line.h"
 
 void	malloc_fd_array(char ***extract)
 {
