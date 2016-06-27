@@ -6,19 +6,44 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/04/21 19:11:52 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/06/27 19:20:10 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../inc/fdf.h"
 
-int main(void)
+static void	init_fdf(int fd)
 {
-	void	*mlx;
-	void	*win;
+	t_fdf	*t_map;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1600, 900, "FdF");
-	mlx_pixel_put(mlx, win, 100, 100, 0x00FFFFFF);
-	mlx_loop(mlx);
+	t_map = (t_fdf*) ft_memalloc(sizeof(t_fdf));
+	ft_bzero(t_map, sizeof(t_fdf));
+	t_map->coord = parser(fd);
+}
+
+int	main(int argc, char **argv)
+{
+	int		fd;
+
+	if (argc == 1)
+	{
+		ft_putendl("usage: ./fdf your_map");
+		exit(0);
+	}
+	else if (argc == 2)
+	{
+		fd = open(argv[1], O_RDONLY);
+		if (fd == -1)
+		{
+			ft_putendl("FdF failed to open() the map.");
+			exit(0);
+		}
+		else
+			init_fdf(fd);
+	}
+	else
+	{
+		ft_putendl("Too many arguments given.");
+		exit(0);
+	}
 }

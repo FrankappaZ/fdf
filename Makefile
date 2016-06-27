@@ -1,6 +1,7 @@
 NAME = fdf
 CC = gcc
-SRC = main.c
+SRC = src/main.c \
+	  src/parser.c
 LIB_H = -I libft/includes/
 LIB = libft/libft.a
 CFLAGS = -g -Wall -Werror -Wextra
@@ -10,7 +11,7 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
 	make -C libft
 	$(CC) $(CFLAGS) -c $(LIB_H) $(SRC)
 	$(CC) $(CFLAGS) $(OBJ) $(LIB_H) $(LIB) $(FLAGS) -o $(NAME)
