@@ -1,7 +1,8 @@
 NAME = fdf
 CC = gcc
 SRC = src/main.c \
-	  src/parser.c
+	  src/parser.c \
+	  src/lists.c
 LIB_H = -I libft/includes/
 LIB = libft/libft.a
 CFLAGS = -g -Wall -Werror -Wextra

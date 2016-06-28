@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/27 18:08:47 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/27 19:20:13 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/06/28 18:28:39 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static t_coord	*create_coord(t_dot dot)
 	return (elem);
 }
 
-t_coord	*addlst(t_coord *begin, t_dot dot)
+t_coord			*addlst(t_coord *begin, t_dot dot)
 {
 	int		y;
 	t_coord	*elem;
@@ -31,20 +31,104 @@ t_coord	*addlst(t_coord *begin, t_dot dot)
 	y = 0;
 	elem = create_coord(dot);
 	tmp = begin;
-	if (!begin)
+	if (begin == NULL)
 		return (elem);
-	else if (elem)
+	while (tmp->nexty != NULL && dot.y-- >= 0)
+		tmp = tmp->nexty;
+	if (dot.y > 0 && tmp->nexty == NULL)
 	{
-		while (dot.y != y++)
-			tmp = tmp->nexty;
-		if (tmp)
-		{
-			while (tmp->nextx != NULL)
-				tmp = tmp->nextx;
-			tmp->nextx = elem;
-		}
-		else
-			tmp = elem;
+		tmp->nexty = elem;
+		return (begin);
 	}
+	while (tmp->nextx != NULL)
+		tmp = tmp->nextx;
+	tmp->nextx = elem;
 	return (begin);
+}
+
+void			linker(t_coord *begin)
+{
+	t_coord	*first_elem;
+	t_coord	*actual_y;
+	t_coord	*y_plus_1;
+
+	first_elem = begin;
+	actual_y = begin;
+	y_plus_1 = begin->nexty;
+	while (begin && actual_y->nexty)
+	{
+		while (actual_y->nextx && y_plus_1->nextx)
+		{
+			actual_y = actual_y->nextx;
+			y_plus_1 = y_plus_1->nextx;
+			actual_y->nexty = y_plus_1;
+		}
+		first_elem = first_elem->nexty;
+		actual_y = first_elem;
+		y_plus_1 = actual_y->nexty;
+	}
+}
+
+void			coord_setter(t_coord *begin)
+{
+	t_coord	*first_elem;
+	t_coord	*cursor;
+	t_dot	counters;
+
+	first_elem = begin;
+	counters.x = 0;
+	counters.y = 0;
+	while (first_elem)
+	{
+		cursor = first_elem;
+		while (cursor->nextx)
+		{
+			cursor->dot.x = counters.x++;
+			cursor->dot.y = counters.y;
+			cursor = cursor->nextx;
+		}
+		first_elem = first_elem->nexty;
+		counters.x = 0;
+		counters.y++;
+	}
+}
+
+void			map_explorer(t_coord *begin)
+{
+	t_coord	*first_elem;
+	t_coord	*cursor;
+
+	first_elem = begin;
+	while (first_elem)
+	{
+		cursor = first_elem;
+		while (cursor)
+		{
+			ft_putnbr(cursor->dot.z);
+			ft_putchar(' ');
+			cursor = cursor->nextx;
+		}
+		first_elem = first_elem->nexty;
+		ft_putchar('\n');
+	}
+}
+
+void			map_explor(t_coord *begin)
+{
+	t_coord	*first_elem;
+	t_coord	*cursor;
+
+	first_elem = begin;
+	while (first_elem)
+	{
+		cursor = first_elem;
+		while (cursor)
+		{
+			ft_putnbr(cursor->dot.z);
+			ft_putchar(' ');
+			cursor = cursor->nexty;
+		}
+		first_elem = first_elem->nextx;
+		ft_putchar('\n');
+	}
 }
