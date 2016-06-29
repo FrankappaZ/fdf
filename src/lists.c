@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/27 18:08:47 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/29 14:33:51 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/06/29 16:14:42 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void			map_explorer(t_coord *begin)
 		cursor = first_elem;
 		while (cursor)
 		{
-			ft_putnbr(cursor->dot.z);
+			ft_putnbr(cursor->dotp.y);
 			ft_putchar(' ');
 			cursor = cursor->nextx;
 		}

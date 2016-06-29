@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/29 15:30:13 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/06/29 16:17:06 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ static t_fdf	*init_fdf(int fd)
 	begin = NULL;
 	t_map = (t_fdf*) ft_memalloc(sizeof(t_fdf));
 	ft_bzero(t_map, sizeof(t_fdf));
+	t_map->params.radius = 0.25;
 	t_map->coord = parser(fd, begin);
+	mprime(t_map);
 	map_explorer(t_map->coord);
+	init_mlx(t_map);
 	return (t_map);
 }
 
@@ -43,9 +46,7 @@ int				main(int argc, char **argv)
 			exit(0);
 		}
 		else
-		{
 			init_fdf(fd);
-		}
 	}
 	else
 	{

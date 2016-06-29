@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abureau <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/06/29 15:39:37 by abureau           #+#    #+#              #
-#    Updated: 2016/06/29 15:39:37 by abureau          ###   ########.fr        #
+#    Created: 2016/06/29 15:48:57 by abureau           #+#    #+#              #
+#    Updated: 2016/06/29 15:48:57 by abureau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,6 +15,7 @@ NAME = fdf
 SRC = ./src/main.c \
 	./src/parser.c \
 	./src/lists.c \
+	./src/mprime.c \
 	./src/mlx_source.c
 
 CC = gcc
