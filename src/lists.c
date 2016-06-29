@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/27 18:08:47 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/28 18:28:39 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/06/29 14:33:51 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,26 +109,6 @@ void			map_explorer(t_coord *begin)
 			cursor = cursor->nextx;
 		}
 		first_elem = first_elem->nexty;
-		ft_putchar('\n');
-	}
-}
-
-void			map_explor(t_coord *begin)
-{
-	t_coord	*first_elem;
-	t_coord	*cursor;
-
-	first_elem = begin;
-	while (first_elem)
-	{
-		cursor = first_elem;
-		while (cursor)
-		{
-			ft_putnbr(cursor->dot.z);
-			ft_putchar(' ');
-			cursor = cursor->nexty;
-		}
-		first_elem = first_elem->nextx;
 		ft_putchar('\n');
 	}
 }
