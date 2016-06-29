@@ -1,26 +1,45 @@
+#******************************************************************************#
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: abureau <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2016/06/29 15:39:37 by abureau           #+#    #+#              #
+#    Updated: 2016/06/29 15:39:37 by abureau          ###   ########.fr        #
+#                                                                              #
+#******************************************************************************#
+
 NAME = fdf
+
+SRC = ./src/main.c \
+	./src/parser.c \
+	./src/lists.c \
+	./src/mlx_source.c
+
 CC = gcc
-SRC = src/main.c \
-	  src/parser.c \
-	  src/lists.c
-LIB_H = -I libft/includes/
-LIB = libft/libft.a
-CFLAGS = -g -Wall -Werror -Wextra
-FLAGS = -L/usr/local/lib/ -I/usr/local/include -lmlx -framework OpenGL -framework AppKit
 
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME)
+CFLAGS = -g -Wall -Wextra
+
+all: LIBCOMPILE $(NAME)
 
 $(NAME): $(OBJ)
-	make -C libft
-	$(CC) $(CFLAGS) -c $(LIB_H) $(SRC)
-	$(CC) $(CFLAGS) $(OBJ) $(LIB_H) $(LIB) $(FLAGS) -o $(NAME)
+	$(CC) -o $@ $^ -I libft/includes -L libft/ -lft -L/usr/local/lib/ -I/usr/local/include -lmlx -framework OpenGL -framework AppKit
+
+LIBCOMPILE:
+	 make -C libft/
+
+%.o: %.c
+	$(CC) $(CFLAGS) -I libft/includes -o $@ -c $<
 
 clean:
 	rm -f $(OBJ)
+	make -C libft/ clean
 
 fclean: clean
 	rm -f $(NAME)
+	make -C libft/ fclean
 
 re: fclean all
