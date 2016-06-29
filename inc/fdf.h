@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/28 18:48:05 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/06/29 15:43:15 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,16 @@ typedef struct		s_dot
 	int				z;
 }					t_dot;
 
+typedef struct		s_dotp
+{
+	int				xp;
+	int				yp;
+}					t_dotp;
+
 typedef struct		s_coord
 {
 	struct s_dot	dot;
+	struct s_dotp	dotp;
 	struct s_coord	*nextx;
 	struct s_coord	*nexty;
 }					t_coord;
