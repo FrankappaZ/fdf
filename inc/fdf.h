@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/29 16:52:39 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/06/29 18:53:33 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,23 @@
 # include <mlx.h>
 # include <stdio.h>
 # include "../libft/includes/libft.h"
-# define HEIGHT 600
-# define WIDTH 600
+# define HEIGHT 1000
+# define WIDTH 1600
+# define SPACING 50
+# define RAD M_PI/4.
 # define TITLE "Window title"
 
 typedef struct		s_dot
 {
-	int				x;
-	int				y;
-	int				z;
+	float				x;
+	float				y;
+	float				z;
 }					t_dot;
 
 typedef struct		s_dotp
 {
-	int				x;
-	int				y;
+	float				x;
+	float				y;
 }					t_dotp;
 
 typedef struct		s_coord
@@ -47,7 +49,7 @@ typedef struct		s_params
 	int				hor_pad;
 	int				ver_pad;
 	int				z_mod;
-	float			radius;
+	float			rad;
 }					t_params;
 
 typedef struct		s_win

@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/27 18:08:47 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/29 16:14:42 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/06/29 18:42:56 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,11 @@ void			coord_setter(t_coord *begin)
 		cursor = first_elem;
 		while (cursor->nextx)
 		{
-			cursor->dot.x = counters.x++;
-			cursor->dot.y = counters.y;
+			cursor->dot.x = counters.x++ * SPACING;
+			cursor->dot.y = counters.y * SPACING;
 			cursor = cursor->nextx;
 		}
+			cursor->dot.x = counters.x++ * SPACING;
 		first_elem = first_elem->nexty;
 		counters.x = 0;
 		counters.y++;
@@ -104,6 +105,8 @@ void			map_explorer(t_coord *begin)
 		cursor = first_elem;
 		while (cursor)
 		{
+			ft_putnbr(cursor->dotp.x);
+			ft_putchar(' ');
 			ft_putnbr(cursor->dotp.y);
 			ft_putchar(' ');
 			cursor = cursor->nextx;

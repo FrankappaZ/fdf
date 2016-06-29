@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 16:48:51 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/29 17:04:30 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/06/29 18:53:31 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static int	my_key_func(int keycode, void *param)
 		tmp->params.z_mod = tmp->params.z_mod + 0.5;
 	if (keycode == 20)
 		tmp->params.z_mod = tmp->params.z_mod - 0.5;
-	tmp->params.radius = (keycode == 35) ? tmp->params.radius + 1 : tmp->params.radius;
-	tmp->params.radius = (keycode == 31) ? tmp->params.radius - 1 : tmp->params.radius;
+	tmp->params.rad = (keycode == 35) ? tmp->params.rad + 1 : tmp->params.rad;
+	tmp->params.rad = (keycode == 31) ? tmp->params.rad - 1 : tmp->params.rad;
 	tmp->params.hor_pad = (keycode == 123) ? tmp->params.hor_pad - 40 : tmp->params.hor_pad;
 	tmp->params.hor_pad = (keycode == 124) ? tmp->params.hor_pad + 40 : tmp->params.hor_pad;
 	return (0);
@@ -48,10 +48,30 @@ void	put_pixel_img(void * img, int x, int y, int color)
 
 	if (x >= HEIGHT || y >= WIDTH)
 		return ;
+	bi /= 8 ;
 	ipixel = x * bi + y * sizu;
 	map[ipixel] = color >> 0;
 	map[ipixel + 1] = color >> 8;
 	map[ipixel + 2] = color >> 16;
+}
+
+void	print_map_dots(t_fdf *map)
+{
+	t_coord	*first_elem;
+	t_coord	*cursor;
+
+	first_elem = map->coord;
+	while (first_elem)
+	{
+		cursor = first_elem;
+		while (cursor)
+		{
+			put_pixel_img(map->win.img, cursor->dotp.x, cursor->dotp.y, 0x00FFFFFF);
+			cursor = cursor->nextx;
+		}
+		first_elem = first_elem->nexty;
+		ft_putchar('\n');
+	}
 }
 
 void	init_mlx(t_fdf *map)
@@ -59,6 +79,8 @@ void	init_mlx(t_fdf *map)
 	map->win.mlx = mlx_init();
 	map->win.win = mlx_new_window(map->win.mlx, WIDTH, HEIGHT, TITLE);
 	map->win.img = mlx_new_image(map->win.mlx, WIDTH, HEIGHT);
+	print_map_dots(map);
+	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, WIDTH / 2, HEIGHT / 2);
 	mlx_hook(map->win.win, 2, 1, my_key_func, map);
 	mlx_loop(map->win.mlx);
 }
