@@ -6,11 +6,12 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 14:24:46 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/07/05 17:22:32 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/07/05 17:54:32 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+#include "../inc/rota.h"
 
 static t_dot	set_eyes_coord(t_fdf *map)
 {
@@ -33,5 +34,7 @@ void	set_proj_coord(t_coord *coord, t_fdf *map)
 void	mprime(t_fdf *map)
 {
 	map->coord->eyes = set_eyes_coord(map);
+	list_mod(map, &set_proj_coord);
+	list_mod(map, &map_printer);
 
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abureau <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/06/29 15:48:57 by abureau           #+#    #+#              #
-#    Updated: 2016/06/29 15:48:57 by abureau          ###   ########.fr        #
+#    Created: 2016/07/05 17:32:44 by abureau           #+#    #+#              #
+#    Updated: 2016/07/05 17:32:44 by abureau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,7 +16,8 @@ SRC = ./src/main.c \
 	./src/parser.c \
 	./src/lists.c \
 	./src/mprime.c \
-	./src/mlx_source.c
+	./src/mlx_source.c \
+	./src/rota.c
 
 CC = gcc
 
