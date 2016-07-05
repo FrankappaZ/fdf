@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: abureau <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/07/05 17:32:44 by abureau           #+#    #+#              #
-#    Updated: 2016/07/05 17:32:44 by abureau          ###   ########.fr        #
+#    Created: 2016/07/05 20:47:02 by abureau           #+#    #+#              #
+#    Updated: 2016/07/05 20:47:02 by abureau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -15,6 +15,7 @@ NAME = fdf
 SRC = ./src/main.c \
 	./src/parser.c \
 	./src/lists.c \
+	./src/color.c \
 	./src/mprime.c \
 	./src/mlx_source.c \
 	./src/rota.c
