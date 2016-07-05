@@ -23,6 +23,8 @@ void		map_printer_p(t_coord *elem, t_fdf *map)
 	ft_putstr(" | y : ");
 	ft_putnbrnl(elem->dotp.y);
 	cnt++;
+	if (map == NULL)
+		map = NULL;
 }
 
 void		map_printer(t_coord *elem, t_fdf *map)
@@ -38,6 +40,8 @@ void		map_printer(t_coord *elem, t_fdf *map)
 	ft_putstr(" | z : ");
 	ft_putnbrnl(elem->dot.z);
 	cnt++;
+	if (map == NULL)
+		map = NULL;
 }
 
 void		list_mod(t_fdf *map, void (*ptr_func)(t_coord*, t_fdf*))
