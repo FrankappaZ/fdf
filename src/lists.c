@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/27 18:08:47 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/29 18:42:56 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/07/05 18:06:45 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void			coord_setter(t_coord *begin)
 			cursor = cursor->nextx;
 		}
 			cursor->dot.x = counters.x++ * SPACING;
+			cursor->dot.y = counters.y * SPACING;
 		first_elem = first_elem->nexty;
 		counters.x = 0;
 		counters.y++;
