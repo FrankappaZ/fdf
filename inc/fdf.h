@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/29 18:53:33 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/07/05 17:20:20 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct		s_coord
 {
 	struct s_dot	dot;
 	struct s_dotp	dotp;
+	struct s_dot	eyes;
 	struct s_coord	*nextx;
 	struct s_coord	*nexty;
 }					t_coord;
@@ -49,6 +50,7 @@ typedef struct		s_params
 	int				hor_pad;
 	int				ver_pad;
 	int				z_mod;
+	int				eyes_z;
 	float			rad;
 }					t_params;
 
@@ -74,5 +76,6 @@ void				linker(t_coord *begin);
 void				map_explorer(t_coord *begin);
 void				mprime(t_fdf *map);
 void				put_pixel_img(void *img, int x, int y, int color);
+void				set_proj_coord(t_coord *coord, t_fdf *map);
 
 #endif
