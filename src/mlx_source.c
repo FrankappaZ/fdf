@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 16:48:51 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/29 18:53:31 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/07/05 20:53:48 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	put_pixel_img(void * img, int x, int y, int color)
 	int		ipixel;
 	char	*map = mlx_get_data_addr(img, &bi, &sizu, &endian);
 
-	if (x >= HEIGHT || y >= WIDTH)
+	if (x >= WIDTH || y >= HEIGHT)
 		return ;
 	bi /= 8 ;
 	ipixel = x * bi + y * sizu;
@@ -66,7 +66,7 @@ void	print_map_dots(t_fdf *map)
 		cursor = first_elem;
 		while (cursor)
 		{
-			put_pixel_img(map->win.img, cursor->dotp.x, cursor->dotp.y, 0x00FFFFFF);
+			put_pixel_img(map->win.img, cursor->dotp.x, cursor->dotp.y, get_color(map, 100, cursor->dot.z, cursor->dot.z));
 			cursor = cursor->nextx;
 		}
 		first_elem = first_elem->nexty;
@@ -80,7 +80,7 @@ void	init_mlx(t_fdf *map)
 	map->win.win = mlx_new_window(map->win.mlx, WIDTH, HEIGHT, TITLE);
 	map->win.img = mlx_new_image(map->win.mlx, WIDTH, HEIGHT);
 	print_map_dots(map);
-	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, WIDTH / 2, HEIGHT / 2);
+	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, 20, 20);
 	mlx_hook(map->win.win, 2, 1, my_key_func, map);
 	mlx_loop(map->win.mlx);
 }

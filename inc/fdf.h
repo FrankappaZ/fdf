@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/07/05 17:20:20 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/07/05 20:51:31 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,26 @@
 # define SPACING 50
 # define RAD M_PI/4.
 # define TITLE "Window title"
+
+# define CCYA 0X0000FFFF
+# define CRED 0X00FF0000
+# define CWHI 0X00FFFFFF
+# define CORA 0X00FF7500
+# define CYEL 0X00FFFF00
+# define CGRE 0X0000FF00
+# define CBLU 0X000000FF
+# define CPIN 0X00FF00FF
+# define CBLA 0X00000000
+
+# define RP0 (unsigned int)(((p_now - 0.) * 5.)* 0XFF/ 100.)
+# define RP20 (unsigned int)(((p_now - 20.) * 5.)* 0XFF/ 100.)
+# define RP40 (unsigned int)(((p_now - 40.) * 5.)* 0XFF/ 100.)
+# define RP60 (unsigned int)(((p_now - 60.) * 5.)* 0XFF/ 100.)
+# define RP80 (unsigned int)(((p_now - 80.) * 5.)* 0XFF/ 100.)
+
+#define RANGE params.z_range.range_z
+#define LOW_RANGE params.z_range.l_range_z
+#define HIGH_RANGE params.z_range.h_range_z
 
 typedef struct		s_dot
 {
@@ -44,8 +64,17 @@ typedef struct		s_coord
 	struct s_coord	*nexty;
 }					t_coord;
 
+
+typedef struct		s_range
+{
+	int				l_range_z;
+	int				h_range_z;
+	int				range_z;
+}					t_range;
+
 typedef struct		s_params
 {
+	struct s_range	z_range;
 	int				spacing;
 	int				hor_pad;
 	int				ver_pad;
@@ -72,10 +101,11 @@ t_coord				*addlst(t_coord *begin, t_dot dot);
 t_coord				*parser(int fd, t_coord *begin);
 void				coord_setter(t_coord *begin);
 void				init_mlx(t_fdf *map);
+void				get_range(t_fdf *map);
+int				get_color(t_fdf *map, int p_beg, int value, int next);
 void				linker(t_coord *begin);
 void				map_explorer(t_coord *begin);
 void				mprime(t_fdf *map);
 void				put_pixel_img(void *img, int x, int y, int color);
-void				set_proj_coord(t_coord *coord, t_fdf *map);
 
 #endif
