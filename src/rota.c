@@ -17,7 +17,7 @@ void		map_printer_p(t_coord *elem, t_fdf *map)
 	ft_putstr("x : ");
 	ft_putnbr(elem->dotp.x);
 	ft_putstr(" | y : ");
-	ft_putnbr(elem->dotp.y);
+	ft_putnbrnl(elem->dotp.y);
 }
 
 void		map_printer(t_coord *elem, t_fdf *map)
