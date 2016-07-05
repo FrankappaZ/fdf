@@ -14,6 +14,10 @@ void		map_rotation(t_coord *elem, t_fdf *map)
 
 void		map_printer_p(t_coord *elem, t_fdf *map)
 {
+	static int	cnt = 0;
+
+	ft_putnbr(cnt);
+	ft_putstr(" :: ");
 	ft_putstr("x : ");
 	ft_putnbr(elem->dotp.x);
 	ft_putstr(" | y : ");
