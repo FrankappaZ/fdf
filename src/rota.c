@@ -45,6 +45,5 @@ void		list_mod(t_fdf *map, void (*ptr_func)(t_coord*, t_fdf*))
 			cursor = cursor->nextx;
 		}
 		first_elem = first_elem->nexty;
-		ft_putchar('\n');
 	}
 }
