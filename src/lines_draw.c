@@ -6,27 +6,16 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/05 19:50:35 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/07/05 20:58:25 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/07/06 12:13:19 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 
-void	lines_draw(t_fdf *map)
+void	drawer(t_fdf *map)
 {
-	int	dx;
-	int	dy;
-	int	e;
+	t_coord	*tmp;
+	t_coord	*cursor;
 
-	if ((dx = x2 - x1) != 0)
-		if (dx > 0)
-			if ((dy = y2 - y1) != 0)
-				if (dy > 0)
-					if (dx >= dy)
-					{
-						e = dx;
-						dx *= 2;
-						dy *= 2;
-						put_pixel_img()
-					}
+	cursor = map->coord;
 }
