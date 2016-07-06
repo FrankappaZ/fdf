@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/27 17:12:24 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/06/29 18:53:35 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/07/06 10:49:04 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,3 +49,4 @@ t_coord			*parser(int fd, t_coord *begin)
 	coord_setter(begin);
 	return (begin);
 }
+

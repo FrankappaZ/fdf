@@ -23,6 +23,8 @@ void		map_printer_p(t_coord *elem, t_fdf *map)
 	ft_putstr(" | y : ");
 	ft_putnbrnl(elem->dotp.y);
 	cnt++;
+	if (map == NULL)
+		map = NULL;
 }
 
 void		map_printer(t_coord *elem, t_fdf *map)
@@ -36,8 +38,13 @@ void		map_printer(t_coord *elem, t_fdf *map)
 	ft_putstr(" | y : ");
 	ft_putnbr(elem->dot.y);
 	ft_putstr(" | z : ");
-	ft_putnbrnl(elem->dot.z);
+	ft_putnbr(elem->dot.z);
+	ft_putstr(" = ");
+	ft_putnbr(elem->p_val);
+	ft_putstr(" % \n");
 	cnt++;
+	if (map == NULL)
+		map = NULL;
 }
 
 void		list_mod(t_fdf *map, void (*ptr_func)(t_coord*, t_fdf*))
@@ -57,3 +64,11 @@ void		list_mod(t_fdf *map, void (*ptr_func)(t_coord*, t_fdf*))
 		first_elem = first_elem->nexty;
 	}
 }
+
+void		set_p_value(t_coord *elem ,t_fdf *map)
+{
+	elem->p_val = ((elem->dot.z - map->LOW_RANGE) 
+			* 100 / (map->HIGH_RANGE - map->LOW_RANGE));
+}
+
+

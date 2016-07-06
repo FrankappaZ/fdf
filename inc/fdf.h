@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/07/05 20:51:31 by abureau          ###   ########.fr       */
+/*   Updated: 2016/07/06 12:05:11 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../libft/includes/libft.h"
 # define HEIGHT 1000
 # define WIDTH 1600
-# define SPACING 50
+# define SPACING 20
 # define RAD M_PI/4.
 # define TITLE "Window title"
 
@@ -38,9 +38,28 @@
 # define RP60 (unsigned int)(((p_now - 60.) * 5.)* 0XFF/ 100.)
 # define RP80 (unsigned int)(((p_now - 80.) * 5.)* 0XFF/ 100.)
 
-#define RANGE params.z_range.range_z
-#define LOW_RANGE params.z_range.l_range_z
-#define HIGH_RANGE params.z_range.h_range_z
+# define RANGE params.z_range.range_z
+# define LOW_RANGE params.z_range.l_range_z
+# define HIGH_RANGE params.z_range.h_range_z
+
+# define X1 dotp.x
+# define Y1 dotp.y
+# define X2 nextx->dotp.x
+# define Y2 nextx->dotp.y
+# define X3 nexty->dotp.x
+# define Y3 nexty->dotp.y
+
+typedef struct	s_math
+{
+	float	dx;
+	float	dy;
+	float	dp;
+	float	deltaE;
+	float	deltaNE;
+	int	x;
+	int	y;
+	int inv;
+}				t_math;
 
 typedef struct		s_dot
 {
@@ -62,6 +81,7 @@ typedef struct		s_coord
 	struct s_dot	eyes;
 	struct s_coord	*nextx;
 	struct s_coord	*nexty;
+	int				p_val;
 }					t_coord;
 
 
@@ -97,15 +117,25 @@ typedef struct		s_fdf
 	struct s_params	params;
 }					t_fdf;
 
+void				drawfunc(t_fdf *map);
+int					invertcoord(t_coord *t_dot);
+int					invert2coord(t_coord *t_dot);
+
 t_coord				*addlst(t_coord *begin, t_dot dot);
 t_coord				*parser(int fd, t_coord *begin);
 void				coord_setter(t_coord *begin);
 void				init_mlx(t_fdf *map);
 void				get_range(t_fdf *map);
-int				get_color(t_fdf *map, int p_beg, int value, int next);
+int					get_color(t_fdf *map, int p_beg, int value, int next);
 void				linker(t_coord *begin);
 void				map_explorer(t_coord *begin);
 void				mprime(t_fdf *map);
 void				put_pixel_img(void *img, int x, int y, int color);
+void				drawfcase(t_coord *t_dot, t_fdf *map);
+void				drawfcase2(t_coord *t_dot, t_fdf *map);
+void				drawfunc(t_fdf *map);
+int					invertcoord(t_coord *t_dot);
+int					invert2coord(t_coord *t_dot);
+
 
 #endif
