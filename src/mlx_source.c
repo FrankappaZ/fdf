@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 16:48:51 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/07/06 12:10:06 by abureau          ###   ########.fr       */
+/*   Updated: 2016/07/06 13:00:36 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	init_mlx(t_fdf *map)
 	map->win.mlx = mlx_init();
 	map->win.win = mlx_new_window(map->win.mlx, WIDTH, HEIGHT, TITLE);
 	map->win.img = mlx_new_image(map->win.mlx, WIDTH, HEIGHT);
-	print_map_dots(map);
+//	print_map_dots(map);
 	drawfunc(map);
-	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, 20, 20);
+	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, 50, 50);
 	mlx_hook(map->win.win, 2, 1, my_key_func, map);
 	mlx_loop(map->win.mlx);
 }

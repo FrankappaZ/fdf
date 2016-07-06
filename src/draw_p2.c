@@ -6,7 +6,7 @@
 /*   By: abureau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 17:43:17 by abureau           #+#    #+#             */
-/*   Updated: 2016/07/06 11:47:40 by abureau          ###   ########.fr       */
+/*   Updated: 2016/07/06 13:48:30 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ static void		chose_dpe2(t_math *value, t_coord *t_dot)
 
 static void		weirdcase2(t_math *value, t_coord *t_dot, int *p, t_fdf *map)
 {
-	while (value->x == t_dot->dotp.x && value->y != t_dot->dotp.y)
+	while (value->y <= t_dot->dotp.y)
 	{
 		if (value->inv)
 			*p = 100 - ((value->y - t_dot->Y1) * 100 / (t_dot->Y3 - t_dot->Y1));
 		else
 			*p = ((value->y - t_dot->Y1) * 100 / (t_dot->Y3 - t_dot->Y1));
-		put_pixel_img(map->win.img, value->x + map->params.hor_pad, ++value->y + map->params.ver_pad, get_color(map, *p, t_dot->dot.z, t_dot->nexty->dot.z));
+		put_pixel_img(map->win.img, value->x + map->params.hor_pad, ++value->y + map->params.ver_pad, CWHI);
 	}
 	if (value->inv)
 		invert2coord(t_dot);
@@ -104,7 +104,7 @@ void			drawfcase2(t_coord *t_dot, t_fdf *map)
 			p = 100 - ((value.x - t_dot->X1) * 100 / (t_dot->X3 - t_dot->X1));
 		else
 			p = ((value.x - t_dot->X1) * 100 / (t_dot->X3 - t_dot->X1));
-		put_pixel_img(map->win.img, value.x + map->params.hor_pad, value.y + map->params.ver_pad, get_color(map, p, t_dot->dot.z, t_dot->nexty->dot.z));
+		put_pixel_img(map->win.img, value.x + map->params.hor_pad, value.y + map->params.ver_pad, CWHI);
 	}
 	weirdcase2(&value, t_dot, &p, map);
 }
