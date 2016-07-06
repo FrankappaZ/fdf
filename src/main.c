@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/07/05 17:45:19 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/07/06 12:06:33 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static t_fdf	*init_fdf(int fd)
 	t_map->params.spacing = SPACING;
 	t_map->params.eyes_z = 100;
 	mprime(t_map);
+	list_mod(t_map, &map_printer);
 	init_mlx(t_map);
 	return (t_map);
 }
