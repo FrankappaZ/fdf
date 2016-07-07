@@ -51,11 +51,11 @@
 
 typedef struct	s_math
 {
-	float	dx;
-	float	dy;
-	float	dp;
-	float	deltaE;
-	float	deltaNE;
+	int	dx;
+	int	dy;
+	int	dp;
+	int	deltaE;
+	int	deltaNE;
 	int	x;
 	int	y;
 	int inv;
