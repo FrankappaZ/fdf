@@ -1,50 +1,50 @@
  procédure tracerSegment(entier x1, entier y1, entier x2, entier y2) est
   déclarer entier dx, dy;
 {
-|	si (dx ← x2 - x1) ≠ 0 alors 
-|	{
-|	|	si dx > 0 alors 
-|	|	{
-|	|	|	si (dy ← y2 - y1) ≠ 0 alors 
-|	|	|	{
-|	|	|	|	si dy > 0 alors 
-|	|	|	|	{
-|	|	|	|	|	si dx ≥ dy alors
-|	|	|	|	|	{
-|	|	|	|	|	|	déclarer entier e ;
-|	|	|	|	|	|	dx ← (e ← dx) × 2 ; dy ← dy × 2 ;  // e est positif
-|	|	|	|	|	|	boucler sans fin 
-|	|	|	|	|	|	{ // déplacements horizontaux
-|	|	|	|	|	|	|	tracePixel(x1, y1) ;
-|	|	|	|	|	|	|interrompre boucle si (x1 ← x1 + 1) = x2 ;
-|	|	|	|	|	|	|	si (e ← e - dy) < 0 alors 
-|	|	|	|	|	|	|	{
-|	|	|	|	|	|	|	|	y1 ← y1 + 1 ;
-|	|	|	|	|	|	|	|	e ← e + dx ;
-|	|	|	|	|	|	|	fin si ; 
-|	|	|	|	|	|	|	}
-|	|	|	|	|	|	fin boucle ; 
-|	|	|	|	|	|	}
-|	|	|	|	|	} 
-|	|	|	|	|	sinon
-|	|	|	|	|	{
-|	|	|	|	|	|	déclarer entier e ;
-|	|	|	|	|	|	dy ← (e ← dy) × 2 ; dx ← dx × 2 ;
-|	|	|	|	|	|	boucler sans fin 
-|	|	|	|	|	|	{  // déplacements verticaux
-|	|	|	|	|	|	|	tracePixel(x1, y1);
-|	|	|	|	|	|	|interrompre boucle si (y1 ← y1 + 1) = y2 ;
-|	|	|	|	|	|	|	si (e ← e - dx) < 0 alors 
-|	|	|	|	|	|	|	{
-|	|	|	|	|	|	|	|	x1 <- x1 + 1 ; // diagonal
-|	|	|	|	|	|	|	|	e <- e + dy ;
-|	|	|	|	|	|	|	fin si ; 
-|	|	|	|	|	|	|	}
-|	|	|	|	|	|	fin boucle ; 
-|	|	|	|	|	|	}
-|	|	|	|	|	fin si ; 
-|	|	|	|	|	}
-|	|	|	|	}
+|	si (dx ← x2 - x1) ≠ 0 alors                                                   |    
+|	{                                                                             |
+|	|	si dx > 0 alors                                                             |
+|	|	{                                                                           |
+|	|	|	si (dy ← y2 - y1) ≠ 0 alors                                               |
+|	|	|	{                                                                         |
+|	|	|	|	si dy > 0 alors                                                         |
+|	|	|	|	{                                                                       |
+|	|	|	|	|	si dx ≥ dy alors                                                      |
+|	|	|	|	|	{                                                                     |
+|	|	|	|	|	|	déclarer entier e ;                                                 |
+|	|	|	|	|	|	dx ← (e ← dx) × 2 ; dy ← dy × 2 ;  // e est positif                 |
+|	|	|	|	|	|	boucler sans fin                                                    |
+|	|	|	|	|	|	{ // déplacements horizontaux                                       |
+|	|	|	|	|	|	|	tracePixel(x1, y1) ;                                              |
+|	|	|	|	|	|	|interrompre boucle si (x1 ← x1 + 1) = x2 ;                         |
+|	|	|	|	|	|	|	si (e ← e - dy) < 0 alors                                         |
+|	|	|	|	|	|	|	{                                                                 |
+|	|	|	|	|	|	|	|	y1 ← y1 + 1 ;                                                   |
+|	|	|	|	|	|	|	|	e ← e + dx ;                                                    |
+|	|	|	|	|	|	|	fin si ;                                                          |
+|	|	|	|	|	|	|	}                                                                 |
+|	|	|	|	|	|	fin boucle ;                                                        |
+|	|	|	|	|	|	}                                                                   |
+|	|	|	|	|	}                                                                     |
+|	|	|	|	|	sinon                                                                 |
+|	|	|	|	|	{                                                                     |
+|	|	|	|	|	|	déclarer entier e ;                                                 |
+|	|	|	|	|	|	dy ← (e ← dy) × 2 ; dx ← dx × 2 ;                                   |
+|	|	|	|	|	|	boucler sans fin                                                    |
+|	|	|	|	|	|	{  // déplacements verticaux                                        |
+|	|	|	|	|	|	|	tracePixel(x1, y1);                                               |
+|	|	|	|	|	|	|interrompre boucle si (y1 ← y1 + 1) = y2 ;                         |
+|	|	|	|	|	|	|	si (e ← e - dx) < 0 alors                                         |
+|	|	|	|	|	|	|	{                                                                 |
+|	|	|	|	|	|	|	|	x1 <- x1 + 1 ; // diagonal                                      |
+|	|	|	|	|	|	|	|	e <- e + dy ;                                                   |
+|	|	|	|	|	|	|	fin si ;                                                          |
+|	|	|	|	|	|	|	}                                                                 |
+|	|	|	|	|	|	fin boucle ;                                                        |
+|	|	|	|	|	|	}                                                                   |
+|	|	|	|	|	fin si ;                                                              |
+|	|	|	|	|	}                                                                     |
+|	|	|	|	}                                                                       |
 |	|	|	|	sinon 
 |	|	|	|	{  // dy < 0 (et dx > 0)
 |	|	|	|	|	si dx ≥ -dy alors
@@ -87,130 +87,133 @@
 |	|	|	|	fin si ; 
 |	|	|	|	}
 |	|	|	}
-|	|	|	sinon
-|	|	|	{ // dy = 0 (et dx > 0)
-|	|	|	|	répéter
-|	|	|	|	|	tracePixel(x1, y1) ;
-|	|	|	|	jusqu’à ce que (x1 ← x1 + 1) = x2 ;
-|	|	|	fin si ;
+|	|	|	sinon                                                                   |
+|	|	|	{ // dy = 0 (et dx > 0)                                                 |
+|	|	|	|	répéter                                                               |
+|	|	|	|	|	tracePixel(x1, y1) ;                                                |   FAIT
+|	|	|	|	jusqu’à ce que (x1 ← x1 + 1) = x2 ;                                   |
+|	|	|	fin si ;                                                                |
 |	|	|	}
 |	|	}
-|	|	sinon
-|	|	{ // dx < 0
-|	|	|	si (dy ← y2 - y1) ≠ 0 alors 
-|	|	|	{
-|	|	|	|	si dy > 0 alors
-|	|	|	|	{
-|	|	|	|	|	si -dx ≥ dy alors
-|	|	|	|	|	{
-|	|	|	|	|	|	declarer entier e ;
-|	|	|	|	|	|	dx ← (e ← dx) × 2 ; 
-|	|	|	|	|	|	dy ← dy × 2 ;
-|	|	|	|	|	|	boucler sans fin 
-|	|	|	|	|	|	{ // déplacements horizontaux
-|	|	|	|	|	|	| tracePixel(x1, y1) ;
-|	|	|	|	|	|	interrompre boucle si (x1 ← x1 - 1) = x2 ;
-|	|	|	|	|	|	|	si (e ← e + dy) ≥ 0 alors
-|	|	|	|	|	|	|	{
-|	|	|	|	|	|	|	|	y1 ← y1 + 1 ;  // déplacement diagonal
-|	|	|	|	|	|	|	|	e ← e + dx ;
-|	|	|	|	|	|	|	fin si ;
-|	|	|	|	|	|	|	}
-|	|	|	|	|	|	fin boucle ;
-|	|	|	|	|	|	}
-|	|	|	|	|	}
-|	|	|	|	|	sinon 
-|	|	|	|	|	{
-|	|	|	|	|	|	déclarer entier e ;
-|	|	|	|	|	|	dy ← (e ← dy) × 2 ;  // e est positif
-|	|	|	|	|	|	dx ← dx × 2 ; 
-|	|	|	|	|	|	boucler sans fin
-|	|	|	|	|	|	{ // déplacements verticaux
-|	|	|	|	|	|	|	tracePixel(x1, y1) ;
-|	|	|	|	|	|	interrompre boucle si (y1 ← y1 + 1) = y2 ;
-|	|	|	|	|	|	|	si (e ← e + dx) ≤ 0 alors
-|	|	|	|	|	|	|	{
-|	|	|	|	|	|	|	|	x1 <- x1 - 1 ;
-|	|	|	|	|	|	|	|	e <- e + dy ;
-|	|	|	|	|	|	|	fin si ;
-|	|	|	|	|	|	|	}
-|	|	|	|	|	|	fin boucle ;
-|	|	|	|	|	|	}
-|	|	|	|	|	fin si ;
-|	|	|	|	|	}
-|	|	|	|	}
-|	|	|	|	sinon
-|	|	|	|	{ // dy < 0 (et dx < 0)
-|	|	|	|	|	si dx ≤ dy alors
-|	|	|	|	|	{
-|	|	|	|	|	| declarer entier e;
-|	|	|	|	|	| ds <- (e <- dx * 2);
-|	|	|	|	|	| dy ← dy × 2 ;  // e est négatif
-|	|	|	|	|	|	boucler sans fin
-|	|	|	|	|	|	{  // déplacements horizontaux
-|	|	|	|	|	|	| tracePixel(x1, y1) ;
-|	|	|	|	|	|	interrompre boucle si (x1 ← x1 - 1) = x2 ;
-|	|	|	|	|	|	|	si (e ← e - dy) ≥ 0 alors
-|	|	|	|	|	|	|	{
-|	|	|	|	|	|	| | y1 ← y1 - 1 ;
-|	|	|	|	|	|	| | e ← e + dx ;
-|	|	|	|	|	|	|	fin si ;
-|	|	|	|	|	|	|	}
-|	|	|	|	|	|	fin boucle ; 
-|	|	|	|	|	|	}
-|	|	|	|	|	}
-|	|	|	|	|	sinon
-|	|	|	|	|	{ // vecteur oblique proche de la verticale, dans le 6e octant
-|	|	|	|	|	| declarer entier e ;
-|	|	|	|	|	| dy ← (e ← dy) × 2 ;
-|	|	|	|	|	| dx ← dx × 2 ;  // e est négatif
-|	|	|	|	|	|	boucler sans fin  // déplacements verticaux
-|	|	|	|	|	|	{
-|	|	|	|	|	| | tracePixel(x1, y1);
-|	|	|	|	|	|	interrompre boucle si (y1 ← y1 - 1) = y2 ;
-|	|	|	|	|	|	|	si (e ← e - dx) ≥ 0 alors
-|	|	|	|	|	|	|	{
-|	|	|	|	|	|	| | x1 <- x1 -1;
-|	|	|	|	|	|	| | e <- e + dy;
-|	|	|	|	|	|	|	fin si ;
-|	|	|	|	|	|	|	}
-|	|	|	|	|	|	fin boucle ;
-|	|	|	|	|	|	}
-|	|	|	|	|	fin si ;
-|	|	|	|	|	}
-|	|	|	|	fin si ;
-|	|	|	|	}
-|	|	|	}
-|	|	|	sinon 
-|	|	|	{ // dy = 0 (et dx < 0) 
-|	|	|	|	répéter
-|	|	|	|	|	tracePixel(x1, y1) ;
-|	|	|	|	jusqu’à ce que (x1 ← x1 - 1) = x2 ;
-|	|	|	fin si ;
-|	|	|	}
-|	|	fin si ;
-|	|	}
-|	|	sinon
-|	|	{ // dx = 0
-|	|	|	si (dy ← y2 - y1) ≠ 0 alors 
-|	|	|	{
-|	|	|	|	si dy > 0 alors
-|	|	|	|	{
-|	|	|	|	|	répéter
-|	|	|	|	|	| tracepixel(x1, y1);
-|	|	|	|	|	jusqu’à ce que (y1 ← y1 + 1) = y2 ;
-|	|	|	|	}
-|	|	|	}
-|	|	|	sinon
-|	|	|	{ // dy < 0 (et dx = 0)
-|	|	|	|	répéter
-|	|	|	|	| tracePixel(x1, y1);
-|	|	|	|	jusqu’à ce que (y1 ← y1 - 1) = y2 ;
-|	|	|	fin si ;
-|	|	|	}
-|	|	fin si ;
-|	|	}
-|	fin si ;
-| 	}
+|	| sinon
+|	| { // dx < 0
+|	|	  si (dy ← y2 - y1) ≠ 0 alors 
+|	|	  {
+|	|	|	  si dy > 0 alors
+|	|	|	  {
+|	|	|	|	  si -dx ≥ dy alors
+|	|	|	|	  {
+|	|	|	|	|	  declarer entier e ;
+  |	|	|	|	|	dx ← (e ← dx) × 2 ; 
+  |	|	|	|	|	dy ← dy × 2 ;
+  |	|	|	|	|	boucler sans fin 
+  |	|	|	|	|	{ // déplacements horizontaux
+  |	|	|	|	|	| tracePixel(x1, y1) ;
+  |	|	|	|	interrompre boucle si (x1 ← x1 - 1) = x2 ;
+  |	|	|	|	|	|	si (e ← e + dy) ≥ 0 alors
+  |	|	|	|	|	|	{
+  |	|	|	|	|	|	|	y1 ← y1 + 1 ;  // déplacement diagonal
+  |	|	|	|	|	|	|	e ← e + dx ;
+  |	|	|	|	|	|	fin si ;
+  |	|	|	|	|	|	}
+  |	|	|	|	|	fin boucle ;
+  |	|	|	|	|	}
+|	|	|	|	  }
+  |	|	|	|	sinon 
+  |	|	|	|	{
+  |	|	|	|	|	déclarer entier e ;
+  |	|	|	|	|	dy ← (e ← dy) × 2 ;  // e est positif
+  |	|	|	|	|	dx ← dx × 2 ; 
+  |	|	|	|	|	boucler sans fin
+  |	|	|	|	|	{ // déplacements verticaux
+  |	|	|	|	|	|	tracePixel(x1, y1) ;
+  |	|	|	|	|	interrompre boucle si (y1 ← y1 + 1) = y2 ;
+  |	|	|	|	|	|	si (e ← e + dx) ≤ 0 alors
+  |	|	|	|	|	|	{
+  |	|	|	|	|	|	|	x1 <- x1 - 1 ;
+  |	|	|	|	|	|	|	e <- e + dy ;
+  |	|	|	|	|	|	fin si ;
+  |	|	|	|	|	|	}
+  |	|	|	|	|	fin boucle ;
+  |	|	|	|	|	}
+  |	|	|	|	fin si ;
+  |	|	|	|	}
+|	|	|	  }
+  |	|	|	sinon
+  |	|	|	{ // dy < 0 (et dx < 0)
+  |	|	|	|	si dx ≤ dy alors
+  |	|	|	|	{
+  |	|	|	|	|	declarer entier e;
+  |	|	|	|	|	ds <- (e <- dx * 2);
+  |	|	|	|	|	dy ← dy × 2 ;  // e est négatif
+  |	|	|	|	|	boucler sans fin
+  |	|	|	|	|	{  // déplacements horizontaux
+  |	|	|	|	|	|	tracePixel(x1, y1) ;
+  |	|	|	|	|	interrompre boucle si (x1 ← x1 - 1) = x2 ;
+  |	|	|	|	|	|	si (e ← e - dy) ≥ 0 alors
+  |	|	|	|	|	|	{
+  |	|	|	|	|	|	|	y1 ← y1 - 1 ;
+  |	|	|	|	|	|	|	e ← e + dx ;
+  |	|	|	|	|	|	fin si ;
+  |	|	|	|	|	|	}
+  |	|	|	|	|	fin boucle ; 
+  |	|	|	|	|	}
+  |	|	|	|	}
+  |	|	|	|	sinon
+  |	|	|	|	{ // vecteur oblique proche de la verticale, dans le 6e octant
+  |	|	|	|	| declarer entier e ;
+  |	|	|	|	| dy ← (e ← dy) × 2 ;
+  |	|	|	|	| dx ← dx × 2 ;  // e est négatif
+  |	|	|	|	|	boucler sans fin  // déplacements verticaux
+  |	|	|	|	|	{
+  |	|	|	|	| | tracePixel(x1, y1);
+  |	|	|	|	|	interrompre boucle si (y1 ← y1 - 1) = y2 ;
+  |	|	|	|	|	|	si (e ← e - dx) ≥ 0 alors
+  |	|	|	|	|	|	{
+  |	|	|	|	|	| | x1 <- x1 -1;
+  |	|	|	|	|	| | e <- e + dy;
+  |	|	|	|	|	|	fin si ;
+  |	|	|	|	|	|	}
+  |	|	|	|	|	fin boucle ;
+  |	|	|	|	|	}
+  |	|	|	|	fin si ;
+  |	|	|	|	}
+  |	|	|	fin si ;
+  |	|	|	}
+  |	|	}
+  |	|	sinon 
+  |	|	{ // dy = 0 (et dx < 0) 
+  |	|	|	répéter
+  |	|	|	|	tracePixel(x1, y1) ;
+  |	|	|	jusqu’à ce que (x1 ← x1 - 1) = x2 ;
+  |	|	fin si ;
+  |	|	}
+  |	fin si ;
+  |	}
+  }
+  //                                                            |
+  //                                                    FAIT    V
+  sinon
+  { // dx = 0
+  |	si (dy ← y2 - y1) ≠ 0 alors 
+  |	|	{
+  |	|	|	si dy > 0 alors
+  |	|	|	{
+  |	|	|	|	répéter
+  |	|	|	|	| tracepixel(x1, y1);
+  |	|	|	|	jusqu’à ce que (y1 ← y1 + 1) = y2 ;
+  |	|	|	}
+  |	|	}
+  |	|	sinon
+  |	|	{ // dy < 0 (et dx = 0)
+  |	|	|	répéter
+  |	|	|	| tracePixel(x1, y1);
+  |	|	|	jusqu’à ce que (y1 ← y1 - 1) = y2 ;
+  |	|	fin si ;
+  |	|	}
+  |	fin si ;
+  |	}
+  fin si ;
+  }
 fin procédure ;
 }
