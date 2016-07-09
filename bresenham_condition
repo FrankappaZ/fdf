@@ -108,7 +108,7 @@
 |	|	|	|	|	|	dy ← dy × 2 ;
 |	|	|	|	|	|	boucler sans fin 
 |	|	|	|	|	|	{ // déplacements horizontaux
-|	|	|	|	|	|	tracePixel(x1, y1) ;
+|	|	|	|	|	|	| tracePixel(x1, y1) ;
 |	|	|	|	|	|	interrompre boucle si (x1 ← x1 - 1) = x2 ;
 |	|	|	|	|	|	|	si (e ← e + dy) ≥ 0 alors
 |	|	|	|	|	|	|	{
@@ -143,11 +143,17 @@
 |	|	|	|	{ // dy < 0 (et dx < 0)
 |	|	|	|	|	si dx ≤ dy alors
 |	|	|	|	|	{
+|	|	|	|	|	| declarer entier e;
+|	|	|	|	|	| ds <- (e <- dx * 2);
+|	|	|	|	|	| dy ← dy × 2 ;  // e est négatif
 |	|	|	|	|	|	boucler sans fin
 |	|	|	|	|	|	{  // déplacements horizontaux
+|	|	|	|	|	|	| tracePixel(x1, y1) ;
 |	|	|	|	|	|	interrompre boucle si (x1 ← x1 - 1) = x2 ;
 |	|	|	|	|	|	|	si (e ← e - dy) ≥ 0 alors
 |	|	|	|	|	|	|	{
+|	|	|	|	|	|	| | y1 ← y1 - 1 ;
+|	|	|	|	|	|	| | e ← e + dx ;
 |	|	|	|	|	|	|	fin si ;
 |	|	|	|	|	|	|	}
 |	|	|	|	|	|	fin boucle ; 
@@ -155,11 +161,17 @@
 |	|	|	|	|	}
 |	|	|	|	|	sinon
 |	|	|	|	|	{ // vecteur oblique proche de la verticale, dans le 6e octant
+|	|	|	|	|	| declarer entier e ;
+|	|	|	|	|	| dy ← (e ← dy) × 2 ;
+|	|	|	|	|	| dx ← dx × 2 ;  // e est négatif
 |	|	|	|	|	|	boucler sans fin  // déplacements verticaux
-|	|	|	|	|	|	{						
+|	|	|	|	|	|	{
+|	|	|	|	|	| | tracePixel(x1, y1);
 |	|	|	|	|	|	interrompre boucle si (y1 ← y1 - 1) = y2 ;
 |	|	|	|	|	|	|	si (e ← e - dx) ≥ 0 alors
 |	|	|	|	|	|	|	{
+|	|	|	|	|	|	| | x1 <- x1 -1;
+|	|	|	|	|	|	| | e <- e + dy;
 |	|	|	|	|	|	|	fin si ;
 |	|	|	|	|	|	|	}
 |	|	|	|	|	|	fin boucle ;
@@ -171,11 +183,12 @@
 |	|	|	}
 |	|	|	sinon 
 |	|	|	{ // dy = 0 (et dx < 0) 
-|       |	|	|	répéter
-|      	|	|	|	jusqu’à ce que (x1 ← x1 - 1) = x2 ;
-|   	|	|	fin si ;
-|  	|	|	}
-|	|	fin si ;
+| |	|	|	répéter
+|	|	|	|	|	tracePixel(x1, y1) ;
+| |	|	|	jusqu’à ce que (x1 ← x1 - 1) = x2 ;
+| |	|	fin si ;
+| |	|	}
+| |	fin si ;
 |	|	}
 |	|	sinon
 |	|	{ // dx = 0
@@ -184,12 +197,14 @@
 |	|	|	|	si dy > 0 alors
 |	|	|	|	{
 |	|	|	|	|	répéter
-|       |	|	|	|	jusqu’à ce que (y1 ← y1 + 1) = y2 ;
+|	|	|	|	|	| tracepixel(x1, y1);
+| |	|	|	|	jusqu’à ce que (y1 ← y1 + 1) = y2 ;
 |	|	|	|	}
 |	|	|	}
 |	|	|	sinon
 |	|	|	{ // dy < 0 (et dx = 0)
 |	|	|	|	répéter
+|	|	|	|	| tracePixel(x1, y1);
 |	|	|	|	jusqu’à ce que (y1 ← y1 - 1) = y2 ;
 |	|	|	fin si ;
 |	|	|	}
