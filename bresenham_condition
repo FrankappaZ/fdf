@@ -183,12 +183,12 @@
 |	|	|	}
 |	|	|	sinon 
 |	|	|	{ // dy = 0 (et dx < 0) 
-| |	|	|	répéter
+|	|	|	|	répéter
 |	|	|	|	|	tracePixel(x1, y1) ;
-| |	|	|	jusqu’à ce que (x1 ← x1 - 1) = x2 ;
-| |	|	fin si ;
-| |	|	}
-| |	fin si ;
+|	|	|	|	jusqu’à ce que (x1 ← x1 - 1) = x2 ;
+|	|	|	fin si ;
+|	|	|	}
+|	|	fin si ;
 |	|	}
 |	|	sinon
 |	|	{ // dx = 0
@@ -198,7 +198,7 @@
 |	|	|	|	{
 |	|	|	|	|	répéter
 |	|	|	|	|	| tracepixel(x1, y1);
-| |	|	|	|	jusqu’à ce que (y1 ← y1 + 1) = y2 ;
+|	|	|	|	|	jusqu’à ce que (y1 ← y1 + 1) = y2 ;
 |	|	|	|	}
 |	|	|	}
 |	|	|	sinon
