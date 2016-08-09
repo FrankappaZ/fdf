@@ -125,7 +125,6 @@ typedef struct		s_fdf
 void				drawfunc(t_fdf *map);
 int					invertcoord(t_coord *t_dot);
 int					invert2coord(t_coord *t_dot);
-
 t_coord				*addlst(t_coord *begin, t_dot dot);
 t_coord				*parser(int fd, t_coord *begin);
 void				coord_setter(t_coord *begin);
@@ -142,6 +141,7 @@ void				drawfcase2(t_coord *t_dot, t_fdf *map);
 void				drawfunc(t_fdf *map);
 int					invertcoord(t_coord *t_dot);
 int					invert2coord(t_coord *t_dot);
+void				draw_pix(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1);
 
 
 #endif
