@@ -53,17 +53,19 @@
 
 typedef struct	s_math
 {
-	int	dx;
-	int	dy;
-	int	dp;
-	int	e;
-	int	deltaE;
-	int	deltaNE;
-	int	x0;
-	int	y0;
-	int	x1;
-	int	y1;
-	int inv;
+	char	axis;
+	int		color;
+	int		dx;
+	int		dy;
+	int		dp;
+	int		e;
+	int		deltaE;
+	int		deltaNE;
+	int		x0;
+	int		y0;
+	int		x1;
+	int		y1;
+	int		 inv;
 }				t_math;
 
 typedef struct		s_dot
@@ -77,6 +79,7 @@ typedef struct		s_dotp
 {
 	float				x;
 	float				y;
+	float				*z;
 }					t_dotp;
 
 typedef struct		s_coord
@@ -141,7 +144,19 @@ void				drawfcase2(t_coord *t_dot, t_fdf *map);
 void				drawfunc(t_fdf *map);
 int					invertcoord(t_coord *t_dot);
 int					invert2coord(t_coord *t_dot);
-void				draw_pix(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1);
-
+void				draw_pix(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1);
+void				bres_case_0(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1);
+void				bres_case_1(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1);
+void				bres_case_2(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1);
+void				bres_case_3(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1);
+void				bres_case_4(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1);
+void				delta_case_0(t_math *math);
+void				delta_case_1(t_math *math);
 
 #endif
