@@ -62,29 +62,137 @@ static void	draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1)
 				}
 				else	//		dy < 0 (dx > 0)
 				{
-				
+					if (math.dx >= -(math.dy))
+					{
+						math.e = math.dx;
+						math.deltaE = math.e * 2;
+						math.dy = math.dy * 2;
+						while ((math.x0 = math.x0 + 1) != math.x1)
+						{
+							ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+							if ((math.e = math.e - math.dy) < 0)
+							{
+								math.y0 = math.y0 - 1;
+								math.e = math.e + math.dx;
+							}
+						}
+					}
+					else
+					{ // vecteur oblique proche de la vertical 7eme octant
+						math.e = math.dy;
+						math.dy = math.e * 2;
+						math.dx = math.dx * 2;
+						while ((math.y0 = math.y0 + 1) == math.y1)
+						{
+							ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+							if ((math.e = math.e + math.dx) > 0)
+							{
+								math.x0 = math.x0 + 1;
+								math.e = math.e + math.dy;
+							}
+						}
+					}
 				}
 			}
 			else	//	dy = 0
 			{
-				while ((math.x0 = math.x0 + 1) == math.x1)
+				while ((math.x0 = math.x0 + 1) != math.x1)
 					ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
 			}
 		}
 		else	//	dx < 0
 		{
-			
+			if ((math.dy = math.y1 - math.y0) != 0)
+			{
+				if (math.dy > 0)
+				{
+					if (-(math.dx) >= math.dy)
+					{
+						math.e = math.dx;
+						math.dx = math.e * 2;
+						math.dy = math.dy * 2;
+						while ((math.x0 = math.x0 - 1) != math.x1)
+						{
+							ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+							if ((math.e = math.e + math.dx) >= 0)
+							{
+								math.y0 = math.y0 + 1;
+								math.e = math.e + math.dx;
+							}
+						}
+					}
+					else
+					{
+						math.e = math.dy;
+						math.dy = math.e * 2;
+						math.dx = math.dx * 2;
+						while ((math.y0 = math.y0 + 1) != math.y1)
+						{
+							ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+							if ((math.e = math.e + math.dx) >= 0)
+							{
+								math.y0 = math.y0 + 1;
+								math.e = math.e + math.dx;
+							}
+						}
+					}
+				}
+				else // dy < 0 (et dx < 0)
+				{
+					if (math.dx <= math.dy)
+					{
+						math.e = math.dx;
+						math.dx = math.e * 2;
+						math.dy = math.dy * 2;
+						while ((math.x0 = math.x0 - 1) != math.x1)
+						{
+							ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+							if ((math.e = math.e - math.dy) >= 0)
+							{
+								math.y0 = math.y0 + -1;
+								math.e = math.e + math.dx;
+							}
+						}
+					}
+					else
+					{
+						math.e = math.dy;
+						math.dy = math.e * 2;
+						math.dx = math.dx * 2;
+						while ((math.y0 = math.y0 - 1) != math.y1)
+						{
+							ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+							if ((math.e = math.e - math.dx) >= 0)
+							{
+								math.x0 = math.x0 - 1;
+								math.e = math.e + math.dx;
+							}
+						}
+					}
+				}
+			}
+			else
+			{		//dy = 0 (et dx < 0)
+				while ((math.x0 = math.x0 - 1) != math.x1)
+				{
+					ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+				}
+			}
 		}
 	}
 	else		//dx == 0
 	{
 		if ((math.dy = math.y1 - math.y0) != 0)
+		{
 			if (math.dy > 0)
 				while ((math.y0 = math.y0 + 1) != math.y1)
 					ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+		}
 		else
+		{
 				while ((math.y0 = math.y0 - 1) != math.y1)
 					ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+		}
 	}
 }
 
