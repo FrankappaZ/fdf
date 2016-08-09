@@ -6,7 +6,7 @@
 /*   By: abureau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 16:08:51 by abureau           #+#    #+#             */
-/*   Updated: 2016/07/06 12:04:09 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/09 19:52:23 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	drawfunc(t_fdf *map)
 		while (tmp != NULL)
 		{
 			if (tmp->nextx)
-				drawfcase(tmp, map);
+				draw_segment(map, tmp->dotp, tmp->nextx->dotp);
 			if (tmp->nexty)
-				drawfcase2(tmp, map);
+				draw_segment(map, tmp->dotp, tmp->nexty->dotp);
 			tmp = tmp->nextx;
 		}
 	}

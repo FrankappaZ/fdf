@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 14:24:46 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/09 16:33:22 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/09 19:40:44 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void			set_proj_coord(t_coord *coord, t_fdf *map)
 		(map->params.eyes_z + coord->dot.z) + coord->eyes.x;
 	coord->dotp.y = (map->params.eyes_z * (coord->dot.y - coord->eyes.y)) /
 		(map->params.eyes_z + coord->dot.z) + coord->eyes.y;
+	coord->dotp.z = &coord->dot.z;
 }
 
 void			mprime(t_fdf *map)
@@ -38,3 +39,4 @@ void			mprime(t_fdf *map)
 	list_mod(map, &set_proj_coord);
 	list_mod(map, &set_p_value);
 }
+

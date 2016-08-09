@@ -6,7 +6,7 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 16:25:01 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/09 16:25:03 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/09 20:10:13 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,20 @@ static int	color_chose(double p_now)
 	{
 		return (CYEL - (RP80 << 8));
 	}
+}
+
+void		draw_pix(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)
+{
+	int		color;
+	float	dist;
+	int		p;
+
+	dist = ;
+	p = 100 - ()
+	color = 0;
+	if(dot0->dotp->z > dot1->dotp->z)
+	
+	put_pixel_img(map->win.img, math->x0, math->y0, CGRE);
 }
 
 int			get_color(t_fdf *map, int p_beg, int value, int next)
