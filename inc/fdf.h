@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +7,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/07/06 12:41:00 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/09 17:31:42 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +50,19 @@
 # define X3 nexty->dotp.x
 # define Y3 nexty->dotp.y
 
+
 typedef struct	s_math
 {
 	int	dx;
 	int	dy;
 	int	dp;
+	int	e;
 	int	deltaE;
 	int	deltaNE;
-	int	x;
-	int	y;
+	int	x0;
+	int	y0;
+	int	x1;
+	int	y1;
 	int inv;
 }				t_math;
 
@@ -124,6 +129,7 @@ int					invert2coord(t_coord *t_dot);
 t_coord				*addlst(t_coord *begin, t_dot dot);
 t_coord				*parser(int fd, t_coord *begin);
 void				coord_setter(t_coord *begin);
+void				start_draw(t_fdf *map);
 void				init_mlx(t_fdf *map);
 void				get_range(t_fdf *map);
 int					get_color(t_fdf *map, int p_beg, int value, int next);
