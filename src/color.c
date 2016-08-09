@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/08/09 16:25:01 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/08/09 16:25:03 by rcavadas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/fdf.h"
 
-void	get_range(t_fdf *map)
+void		get_range(t_fdf *map)
 {
 	t_coord	*tmp;
 	t_coord	*cursorx;
@@ -26,7 +38,7 @@ void	get_range(t_fdf *map)
 	map->RANGE = map->HIGH_RANGE - map->LOW_RANGE;
 }
 
-static int			color_chose(double p_now)
+static int	color_chose(double p_now)
 {
 	if (p_now == 0)
 		return (CWHI);

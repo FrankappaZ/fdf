@@ -6,7 +6,7 @@
 /*   By: abureau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 17:43:17 by abureau           #+#    #+#             */
-/*   Updated: 2016/07/06 13:48:30 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/09 16:27:07 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ static void		weirdcase2(t_math *value, t_coord *t_dot, int *p, t_fdf *map)
 			*p = 100 - ((value->y - t_dot->Y1) * 100 / (t_dot->Y3 - t_dot->Y1));
 		else
 			*p = ((value->y - t_dot->Y1) * 100 / (t_dot->Y3 - t_dot->Y1));
-		put_pixel_img(map->win.img, value->x + map->params.hor_pad, ++value->y + map->params.ver_pad, CWHI);
+		put_pixel_img(map->win.img, value->x + map->params.hor_pad, ++value->y
+			+ map->params.ver_pad, CWHI);
 	}
 	if (value->inv)
 		invert2coord(t_dot);
@@ -104,7 +105,8 @@ void			drawfcase2(t_coord *t_dot, t_fdf *map)
 			p = 100 - ((value.x - t_dot->X1) * 100 / (t_dot->X3 - t_dot->X1));
 		else
 			p = ((value.x - t_dot->X1) * 100 / (t_dot->X3 - t_dot->X1));
-		put_pixel_img(map->win.img, value.x + map->params.hor_pad, value.y + map->params.ver_pad, CWHI);
+		put_pixel_img(map->win.img, value.x + map->params.hor_pad, value.y +
+			map->params.ver_pad, CWHI);
 	}
 	weirdcase2(&value, t_dot, &p, map);
 }

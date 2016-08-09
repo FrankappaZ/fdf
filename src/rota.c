@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rota.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/08/09 16:35:06 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/08/09 16:36:03 by rcavadas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/fdf.h"
 #include <math.h>
 
@@ -65,10 +77,8 @@ void		list_mod(t_fdf *map, void (*ptr_func)(t_coord*, t_fdf*))
 	}
 }
 
-void		set_p_value(t_coord *elem ,t_fdf *map)
+void		set_p_value(t_coord *elem, t_fdf *map)
 {
-	elem->p_val = ((elem->dot.z - map->LOW_RANGE) 
-			* 100 / (map->HIGH_RANGE - map->LOW_RANGE));
+	elem->p_val = ((elem->dot.z - map->LOW_RANGE) * 100 / (map->HIGH_RANGE -
+		map->LOW_RANGE));
 }
-
-

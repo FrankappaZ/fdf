@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/07/06 13:02:49 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/09 16:29:03 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_fdf	*init_fdf(int fd)
 	t_coord	*begin;
 
 	begin = NULL;
-	t_map = (t_fdf*) ft_memalloc(sizeof(t_fdf));
+	t_map = (t_fdf*)ft_memalloc(sizeof(t_fdf));
 	ft_bzero(t_map, sizeof(t_fdf));
 	t_map->params.rad = RAD;
 	t_map->coord = parser(fd, begin);
