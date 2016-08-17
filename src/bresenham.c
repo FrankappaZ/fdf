@@ -18,6 +18,7 @@ static void	init_math(t_math *math, t_coord *dot0, t_coord *dot1)
 	math->y0 = dot0->dotp.y;
 	math->x1 = dot1->dotp.x;
 	math->y1 = dot1->dotp.y;
+	math->dist = get_dist(math.x0, math.y0, math.x1, math.y1);
 	math->e = 0;
 }
 
@@ -32,8 +33,33 @@ static void	dx_positive(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)
 	}
 	else
 		while ((math->x0 = math->x0 + 1) != math->x1)
-			ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+		{
+			put_pixel_img(map->win.img, math->x0, math->y0, get_color(map,
+						get_dist(math->x0, math->y0, math->x1, math->y1) 
+						* 100 /	math->dist, dot0->dotp.z, dot1->dotp.z));
+
+		}
 }
+
+static void	dx_n_positive(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)
+{
+	if ((math->dy = math->y1 - math->y0) != 0)
+	{
+		if (math->dy > 0)
+			bres_case_2(math, map, dot0, dot1);
+		else
+			bres_case_3(math, map, dot0, dot1);
+	}
+	else
+		while ((math->x0 = math->x0 - 1) != math->x1)
+		{	
+			put_pixel_img(map->win.img, math->x0, math->y0, get_color(map,
+						get_dist(math->x0, math->y0, math->x1, math->y1) 
+						* 100 /	math->dist, dot0->dotp.z, dot1->dotp.z));
+		}
+
+}
+
 
 void		draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1)
 {
@@ -46,16 +72,7 @@ void		draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1)
 			dx_positive(&math, map, dot0, dot1);
 		else
 		{
-			if ((math.dy = math.y1 - math.y0) != 0)
-			{
-				if (math.dy > 0)
-					bres_case_2(&math, map, dot0, dot1);
-				else
-					bres_case_3(&math, map, dot0, dot1);
-			}
-			else
-				while ((math.x0 = math.x0 - 1) != math.x1)
-					ft_putstr("tracePixel(x0, y0);		PRINT PIXEL HERE ;");
+			dx_n_positive(&math, map, dot0, dot1);
 		}
 	}
 	else

@@ -58,6 +58,7 @@ typedef struct	s_math
 	int		dx;
 	int		dy;
 	int		dp;
+	float		dist;
 	int		e;
 	int		deltaE;
 	int		deltaNE;
@@ -72,14 +73,14 @@ typedef struct		s_dot
 {
 	float				x;
 	float				y;
-	float				z;
+	int				z;
 }					t_dot;
 
 typedef struct		s_dotp
 {
 	float				x;
 	float				y;
-	float				*z;
+	int				*z;
 }					t_dotp;
 
 typedef struct		s_coord
@@ -98,11 +99,14 @@ typedef struct		s_range
 	int				l_range_z;
 	int				h_range_z;
 	int				range_z;
-}					t_range;
+	int				nb_elem;
+}
+					t_range;
 
 typedef struct		s_params
 {
 	struct s_range	z_range;
+	int				color_tab;
 	int				spacing;
 	int				hor_pad;
 	int				ver_pad;
@@ -134,7 +138,7 @@ void				coord_setter(t_coord *begin);
 void				start_draw(t_fdf *map);
 void				init_mlx(t_fdf *map);
 void				get_range(t_fdf *map);
-int					get_color(t_fdf *map, int p_beg, int value, int next);
+int					get_color(t_fdf *map, int p_beg, float prev, float next);
 void				linker(t_coord *begin);
 void				map_explorer(t_coord *begin);
 void				mprime(t_fdf *map);

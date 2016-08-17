@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
+/*
 void		get_range(t_fdf *map)
 {
 	t_coord	*tmp;
@@ -37,7 +37,7 @@ void		get_range(t_fdf *map)
 	}
 	map->RANGE = map->HIGH_RANGE - map->LOW_RANGE;
 }
-
+*/
 static int	color_chose(double p_now)
 {
 	if (p_now == 0)
@@ -78,26 +78,39 @@ void		draw_pix(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)
 	put_pixel_img(map->win.img, math->x0, math->y0, CGRE);
 }
 
-int			get_color(t_fdf *map, int p_beg, int value, int next)
+int			get_color(t_fdf *map, float p_beg, float prev, float next)
 {
-	double	p_start;
-	double	p_now;
-	double	p_end;
+	float	p_start;
+	float	p_now;
+	float	p_end;
 
-	if (value == next)
+	if (prev == next)
 	{
 		if (map->RANGE != 0)
-			p_start = (value - map->LOW_RANGE) * 100 / map->RANGE;
+			p_start = (prev - map->LOW_RANGE) * 100 / map->RANGE;
 		else
-			p_start = (value - map->LOW_RANGE) * 100 / 1;
+			p_start = (prev - map->LOW_RANGE) * 100 / 1;
 		p_now = p_start;
 		p_beg = p_start;
 	}
 	else
 	{
-		p_start = (value - map->LOW_RANGE) * 100 / map->RANGE;
+		p_start = (prev - map->LOW_RANGE) * 100 / map->RANGE;
 		p_end = (next - map->LOW_RANGE) * 100 / map->RANGE;
 		p_now = p_start + (p_beg * ((p_end - p_start) / 100));
 	}
 	return (color_chose(p_now));
 }
+
+void	get_color_tab(t_fdf *map)
+{
+	int	*color_tab;
+
+		
+}
+
+
+
+
+
+
