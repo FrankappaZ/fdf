@@ -15,13 +15,13 @@
 void	delta_case_0(t_math *math)
 {
 	math->e = math->dx;
-	math->dx = math->e * 2;
-	math->dy *= 2;
+	math->dx = math->dx * 2;
+	math->dy = math->dy * 2;
 }
 
 void	delta_case_1(t_math *math)
 {
 	math->e = math->dy;
-	math->dy = math->e * 2;
-	math->dx *= 2;
+	math->dy = math->dy * 2;
+	math->dx = math->dx * 2;
 }

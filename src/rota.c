@@ -79,6 +79,9 @@ void		list_mod(t_fdf *map, void (*ptr_func)(t_coord*, t_fdf*))
 
 void		set_p_value(t_coord *elem, t_fdf *map)
 {
+	if (map->RANGE != 0)
 	elem->p_val = ((elem->dot.z - map->LOW_RANGE) * 100 / (map->HIGH_RANGE -
 		map->LOW_RANGE));
+	else
+	elem->p_val = 0;
 }

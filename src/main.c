@@ -12,17 +12,17 @@
 
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
-
+#include "../mlx/mlx.h"
 static void	init_color(t_fdf *map)
 {
 	static int	isinit = 0;
 
 	if (isinit == 0)
 	{
-		ft_memset(&map->params.z_range, map->coord->dot.z, sizeof(map->params.z_range));
-		map->params.nb_elem = 0;
-		list_mod(map, &count_elem);
-		list_mod(map, &get_range);
+//		ft_memset(&map->params.z_range, map->coord->dot.z, sizeof(map->params.z_range));
+//		map->params.z_range.nb_elem = 0;
+//		list_mod(map, &count_elem);
+//		list_mod(map, &get_range);
 		isinit = 1;
 	}
 }
@@ -41,7 +41,7 @@ static t_fdf	*init_fdf(int fd)
 	t_map->params.eyes_z = 100;
 	init_color(t_map);
 	mprime(t_map);
-	list_mod(t_map, &map_printer_p);
+	list_mod(t_map, &map_printer);
 	init_mlx(t_map);
 	return (t_map);
 }

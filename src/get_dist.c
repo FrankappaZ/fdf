@@ -14,5 +14,12 @@
 
 int		get_dist(int xbeg, int ybeg, int xend, int yend)
 {
-	return (ft_squaroot((ft_square(xend - xbeg)) + (ft_square(yend, ybeg))));
+	float	sqrx;
+	float	sqry;
+	int	sqrt;
+
+	sqrx = (square_f(xend - xbeg));
+	sqry = (square_f(yend - ybeg));
+	sqrt = ft_squaroot(sqrx + sqry);
+	return (sqrt);
 }

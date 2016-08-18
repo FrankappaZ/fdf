@@ -20,5 +20,5 @@ void		map_printer_p(t_coord *elem, t_fdf *map);
 void		map_rotation(t_coord *elem, t_fdf *map);
 void		set_p_value(t_coord *elem, t_fdf *map);
 void		count_elem(t_coord *elem, t_fdf *map);
-void		get_range(t_coord *elem, t_fdf *map);
+//void		get_range(t_coord *elem, t_fdf *map);
 #endif

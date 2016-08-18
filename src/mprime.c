@@ -29,7 +29,6 @@ void			set_proj_coord(t_coord *coord, t_fdf *map)
 		(map->params.eyes_z + coord->dot.z) + coord->eyes.x;
 	coord->dotp.y = (map->params.eyes_z * (coord->dot.y - coord->eyes.y)) /
 		(map->params.eyes_z + coord->dot.z) + coord->eyes.y;
-	coord->dotp.z = &coord->dot.z;
 }
 
 void			mprime(t_fdf *map)

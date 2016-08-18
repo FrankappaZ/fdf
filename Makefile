@@ -5,23 +5,29 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abureau <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/07/06 12:05:43 by abureau           #+#    #+#              #
-#    Updated: 2016/07/06 12:05:43 by abureau          ###   ########.fr        #
+#    Created: 2016/08/18 08:34:33 by abureau           #+#    #+#              #
+#    Updated: 2016/08/18 08:34:33 by abureau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = fdf
 
-SRC = ./src/main.c \
-	./src/parser.c \
-	./src/lists.c \
-	./src/draw_p1.c \
+SRC = ./src/mprime.c \
+	./src/square_f.c \
+	./src/get_dist.c \
+	./src/list_func.c \
 	./src/color.c \
-	./src/draw_p2.c \
-	./src/mprime.c \
-	./src/mlx_source.c \
+	./src/m_source.c \
+	./src/squaroot.c \
+	./src/range.c \
+	./src/main.c \
+	./src/delta_init.c \
+	./src/bres_cases.c \
+	./src/bresenham.c \
+	./src/line.c \
 	./src/rota.c \
-	./src/line.c
+	./src/parser.c \
+	./src/lists.c
 
 CC = gcc
 
@@ -29,16 +35,17 @@ OBJ = $(SRC:.c=.o)
 
 CFLAGS = -g -Wall -Wextra
 
+.ONESHELL:
 all: LIBCOMPILE $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $@ $^ -I libft/includes -L libft/ -lft -L/usr/local/lib/ -I/usr/local/include -lmlx -framework OpenGL -framework AppKit
+	$(CC) -o $@ $^ -I libft/includes -L libft/ -lft -L mlx/ -lmlx -lXext -lX11 -lm -lbsd
 
 LIBCOMPILE:
-	 make -C libft/
+	make -C libft/
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I libft/includes -o $@ -c $<
+	$(CC) $(CFLAGS) -I libft/includes -I mlx -o $@ -c $<
 
 clean:
 	rm -f $(OBJ)

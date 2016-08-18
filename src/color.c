@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-/*
+
 void		get_range(t_fdf *map)
 {
 	t_coord	*tmp;
@@ -37,7 +37,7 @@ void		get_range(t_fdf *map)
 	}
 	map->RANGE = map->HIGH_RANGE - map->LOW_RANGE;
 }
-*/
+
 static int	color_chose(double p_now)
 {
 	if (p_now == 0)
@@ -64,26 +64,13 @@ static int	color_chose(double p_now)
 	}
 }
 
-void		draw_pix(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)
-{
-	int		color;
-	float	dist;
-	int		p;
-
-	dist = ;
-	p = 100 - ()
-	color = 0;
-	if(dot0->dotp->z > dot1->dotp->z)
-	
-	put_pixel_img(map->win.img, math->x0, math->y0, CGRE);
-}
-
 int			get_color(t_fdf *map, float p_beg, float prev, float next)
 {
 	float	p_start;
 	float	p_now;
 	float	p_end;
 
+	p_beg = 100 - p_beg;
 	if (prev == next)
 	{
 		if (map->RANGE != 0)

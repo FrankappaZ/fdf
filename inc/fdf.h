@@ -14,12 +14,12 @@
 #ifndef FDF_H
 # define FDF_H
 # include <math.h>
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include <stdio.h>
 # include "../libft/includes/libft.h"
 # define HEIGHT 1000
 # define WIDTH 1600
-# define SPACING 20
+# define SPACING 10
 # define RAD M_PI/4.
 # define TITLE "Window title"
 
@@ -138,7 +138,8 @@ void				coord_setter(t_coord *begin);
 void				start_draw(t_fdf *map);
 void				init_mlx(t_fdf *map);
 void				get_range(t_fdf *map);
-int					get_color(t_fdf *map, int p_beg, float prev, float next);
+int				ft_squaroot(float nbr);
+int				get_color(t_fdf *map, float p_beg, float prev, float next);
 void				linker(t_coord *begin);
 void				map_explorer(t_coord *begin);
 void				mprime(t_fdf *map);
@@ -146,10 +147,9 @@ void				put_pixel_img(void *img, int x, int y, int color);
 void				drawfcase(t_coord *t_dot, t_fdf *map);
 void				drawfcase2(t_coord *t_dot, t_fdf *map);
 void				drawfunc(t_fdf *map);
+int				get_dist(int xbeg, int ybeg, int xend, int yend);
 int					invertcoord(t_coord *t_dot);
 int					invert2coord(t_coord *t_dot);
-void				draw_pix(t_math *math, t_fdf *map, t_coord *dot0,
-	t_coord *dot1);
 void				bres_case_0(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
 void				bres_case_1(t_math *math, t_fdf *map, t_coord *dot0,
@@ -162,5 +162,6 @@ void				bres_case_4(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
 void				delta_case_0(t_math *math);
 void				delta_case_1(t_math *math);
+float				square_f(float val);
 
 #endif

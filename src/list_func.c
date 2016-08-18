@@ -1,6 +1,6 @@
 
-#include "../ind/fdf.h"
-#include "../ind/rota.h"
+#include "../inc/fdf.h"
+#include "../inc/rota.h"
 
 void		count_elem(t_coord *elem, t_fdf *map)
 {
@@ -11,7 +11,7 @@ void		count_elem(t_coord *elem, t_fdf *map)
 
 }
 
-
+/*
 void	get_range(t_coord *elem, t_fdf *map)
 {
 	if (elem)
@@ -25,4 +25,4 @@ void	get_range(t_coord *elem, t_fdf *map)
 	else
 		ft_putendl("elem error in list_func.c:get_range");
 }
-
+*/
