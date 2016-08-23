@@ -11,17 +11,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #ifndef FDF_H
 # define FDF_H
 # include <math.h>
 # include "../mlx/mlx.h"
 # include <stdio.h>
 # include "../libft/includes/libft.h"
-# define HEIGHT 1000
-# define WIDTH 1600
-# define SPACING 10
+# define HEIGHT 500
+# define WIDTH 800
+# define SPACING 20
 # define RAD M_PI/4.
-# define TITLE "Window title"
+# define TITLE "FDF_42"
+
+/*	ROOT_P = precision de la racine, change le nb de loop dans le cacul de la couleur accelere potenciellment le programme (default 10) */
+# define ROOT_P 2
 
 # define CCYA 0X0000FFFF
 # define CRED 0X00FF0000
@@ -87,9 +91,9 @@ typedef struct		s_coord
 {
 	struct s_dot	dot;
 	struct s_dotp	dotp;
-	struct s_dot	eyes;
 	struct s_coord	*nextx;
 	struct s_coord	*nexty;
+//	struct s_dot	eyes;
 	int				p_val;
 }					t_coord;
 
@@ -113,6 +117,7 @@ typedef struct		s_params
 	int				z_mod;
 	int				eyes_z;
 	float			rad;
+	struct s_dot	eyes;
 }					t_params;
 
 typedef struct		s_win
@@ -129,6 +134,9 @@ typedef struct		s_fdf
 	struct s_params	params;
 }					t_fdf;
 
+
+void				free_data_list(t_fdf *map);
+void				setup_catch();
 void				drawfunc(t_fdf *map);
 int					invertcoord(t_coord *t_dot);
 int					invert2coord(t_coord *t_dot);
@@ -164,4 +172,6 @@ void				delta_case_0(t_math *math);
 void				delta_case_1(t_math *math);
 float				square_f(float val);
 
+
 #endif
+

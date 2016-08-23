@@ -13,6 +13,9 @@
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
 #include "../mlx/mlx.h"
+
+extern t_fdf *g_map;
+
 static void	init_color(t_fdf *map)
 {
 	static int	isinit = 0;
@@ -32,6 +35,8 @@ static t_fdf	*init_fdf(int fd)
 	t_fdf	*t_map;
 	t_coord	*begin;
 
+	g_map = t_map;
+	setup_catch();
 	begin = NULL;
 	t_map = (t_fdf*)ft_memalloc(sizeof(t_fdf));
 	ft_bzero(t_map, sizeof(t_fdf));

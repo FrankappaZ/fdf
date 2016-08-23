@@ -13,39 +13,32 @@
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
 
-static void		set_eyes_coord(t_fdf *map)
+static t_dot	set_eyes_coord(t_fdf *map)
 {
-	ft_putendl("set_eyes_coord");
-	map->params.eyes.x = HEIGHT / 2;
-	map->params.eyes.y = WIDTH / 2;
-	map->params.eyes.z = map->params.eyes_z;
+	t_dot	eyes;
+
+	eyes.x = WIDTH / 2;
+	eyes.y = HEIGHT / 2;
+	eyes.z = map->params.eyes_z;
+	return (eyes);
 }
 
 void			set_proj_coord(t_coord *coord, t_fdf *map)
 {
-	int	sec_div;
-
-
-	sec_div = (map->params.eyes_z + coord->dot.z);
-	
-	if (sec_div == 0)
-		sec_div = 1;
-
 	coord->dotp.x = (map->params.eyes_z * (coord->dot.x - map->params.eyes.x)) /
-	sec_div + map->params.eyes.x;
-		
+		(map->params.eyes_z + coord->dot.z) + map->params.eyes.x;
 	coord->dotp.y = (map->params.eyes_z * (coord->dot.y - map->params.eyes.y)) /
-	sec_div + map->params.eyes.y;
+		(map->params.eyes_z + coord->dot.z) + map->params.eyes.y;
 }
 
 void			mprime(t_fdf *map)
 {
 	static int	isset = 0;
+
 	if (!isset)
 	{
 		get_range(map);
-		set_eyes_coord(map);
-		isset = 1;
+		map->params.eyes = set_eyes_coord(map);
 	}
 	list_mod(map, &set_proj_coord);
 	list_mod(map, &set_p_value);

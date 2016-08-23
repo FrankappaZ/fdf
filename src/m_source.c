@@ -19,24 +19,23 @@ static int	my_key_func(int keycode, void *param)
 	tmp = (t_fdf*)param;
 	if (keycode == 53)
 		exit(0);
-	if (keycode == 126)
-		tmp->params.ver_pad = tmp->params.ver_pad - 35;
-	if (keycode == 125)
-		tmp->params.ver_pad = tmp->params.ver_pad + 35;
-	if (keycode == 19)
-		tmp->params.spacing = tmp->params.spacing + 5;
-	if (keycode == 18)
-		tmp->params.spacing = tmp->params.spacing - 5;
-	if (keycode == 21)
-		tmp->params.z_mod = tmp->params.z_mod + 0.5;
-	if (keycode == 20)
-		tmp->params.z_mod = tmp->params.z_mod - 0.5;
-	tmp->params.rad = (keycode == 35) ? tmp->params.rad + 1 : tmp->params.rad;
-	tmp->params.rad = (keycode == 31) ? tmp->params.rad - 1 : tmp->params.rad;
-	tmp->params.hor_pad = (keycode == 123) ? tmp->params.hor_pad - 40 :
-		tmp->params.hor_pad;
-	tmp->params.hor_pad = (keycode == 124) ? tmp->params.hor_pad + 40 :
-		tmp->params.hor_pad;
+	if (keycode == 122)
+		tmp->params.eyes.y +=5;
+	if (keycode == 113)
+		tmp->params.eyes.x -=5;
+	if (keycode == 115)
+		tmp->params.eyes.y -=5;
+	if (keycode == 100)
+		tmp->params.eyes.x +=5;
+	if (keycode == 65307)
+		exit(0);
+	ft_putstrnb("keycode : ", keycode);
+	mlx_destroy_image(tmp->win.mlx, tmp->win.img);
+	mprime(tmp);
+//	mlx_clear_window(tmp->win.mlx, tmp->win.win);
+	tmp->win.img = mlx_new_image(tmp->win.mlx, WIDTH, HEIGHT);
+	start_draw(tmp);
+	mlx_put_image_to_window(tmp->win.mlx, tmp->win.win, tmp->win.img, 50, 50);
 	return (0);
 }
 

@@ -2,6 +2,15 @@
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
 
+void		free_elem(t_coord *elem, t_fdf *map)
+{
+	free(elem->nextx);
+	free(elem->nexty);
+	free(elem);
+	elem = NULL;
+
+}
+
 void		count_elem(t_coord *elem, t_fdf *map)
 {
 	if (elem)

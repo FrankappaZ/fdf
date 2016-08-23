@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abureau <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/08/18 08:34:33 by abureau           #+#    #+#              #
-#    Updated: 2016/08/18 08:34:33 by abureau          ###   ########.fr        #
+#    Created: 2016/08/23 15:03:15 by abureau           #+#    #+#              #
+#    Updated: 2016/08/23 15:03:15 by abureau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -17,6 +17,7 @@ SRC = ./src/mprime.c \
 	./src/get_dist.c \
 	./src/list_func.c \
 	./src/color.c \
+	./src/catch.c \
 	./src/m_source.c \
 	./src/squaroot.c \
 	./src/range.c \

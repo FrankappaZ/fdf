@@ -84,7 +84,7 @@ void	bres_case_1(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)
 	else
 	{
 		delta_case_1(math);
-		while ((math->y0 = math->y0 + 1) == math->y1)
+		while ((math->y0 = math->y0 - 1) != math->y1)
 		{
 			put_pixel_img(map->win.img, math->x0, math->y0, get_color(map,
 				get_dist(math->x0, math->y0, math->x1, math->y1) 
@@ -185,14 +185,16 @@ void	bres_case_4(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)
 					get_dist(math->x0, math->y0, math->x1, math->y1) 
 					* 100 /	math->dist, dot0->dot.z, dot1->dot.z));
 			}
-	}
-	else
-	{
-		while ((math->y0 = math->y0 - 1) != math->y1)
+		else
 		{
-			put_pixel_img(map->win.img, math->x0, math->y0, get_color(map,
-				get_dist(math->x0, math->y0, math->x1, math->y1) 
-				* 100 /	math->dist, dot0->dot.z, dot1->dot.z));
+			while ((math->y0 = math->y0 - 1) != math->y1)
+			{
+				put_pixel_img(map->win.img, math->x0, math->y0, get_color(map,
+					get_dist(math->x0, math->y0, math->x1, math->y1) 
+					* 100 /	math->dist, dot0->dot.z, dot1->dot.z));
+			}
 		}
 	}
 }
+
+

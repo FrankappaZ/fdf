@@ -15,6 +15,7 @@
 # include "./fdf.h"
 
 void		list_mod(t_fdf *map, void (*ptr_func)(t_coord*, t_fdf*));
+void		free_elem(t_coord *elem, t_fdf *map);
 void		map_printer(t_coord *elem, t_fdf *map);
 void		map_printer_p(t_coord *elem, t_fdf *map);
 void		map_rotation(t_coord *elem, t_fdf *map);
