@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+#include <unistd.h>
+#include <sys/wait.h>
+#include <sys/types.h>
 
 static void	init_math(t_math *math, t_coord *dot0, t_coord *dot1)
 {
@@ -83,6 +86,17 @@ void		draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1)
 		bres_case_4(&math, map, dot0, dot1);
 }
 
+static void	i_need_some_line(t_fdf *map, t_coord *tmp)
+{
+	if (tmp->dotp.y <= HEIGHT && tmp->dotp.x <= WIDTH)
+	{
+			if (tmp->nextx)
+				draw_segment(map, tmp, tmp->nextx);
+			if (tmp->nexty)
+				draw_segment(map, tmp, tmp->nexty);
+	}
+}
+
 void		start_draw(t_fdf *map)
 {
 	t_coord	*tmp;
@@ -95,19 +109,7 @@ void		start_draw(t_fdf *map)
 		cursory = cursory->nexty;
 		while (tmp != NULL)
 		{
-			if (tmp->dotp.y <= HEIGHT && tmp->dotp.x <= WIDTH)
-			{
-				if (tmp->nextx)
-				{
-					//ft_putstrnb("z =", tmp->nextx->dotp.y);
-					draw_segment(map, tmp, tmp->nextx);
-				}
-				if (tmp->nexty)
-				{
-					//ft_putstrnb("z =", tmp->nexty->dotp.y);
-					draw_segment(map, tmp, tmp->nexty);
-				}
-			}
+			i_need_some_line(map, tmp);
 			tmp = tmp->nextx;
 		}
 	}

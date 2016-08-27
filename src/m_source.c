@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
-
+#include "../inc/rota.h"
 static int	my_key_func(int keycode, void *param)
 {
 	t_fdf	*tmp;
@@ -28,11 +28,12 @@ static int	my_key_func(int keycode, void *param)
 	if (keycode == 100)
 		tmp->params.eyes.x +=5;
 	if (keycode == 65307)
-		exit(0);
+		free_data_list();
+	if (keycode == 65363)
+		list_mod(tmp, &map_rotation);
 	ft_putstrnb("keycode : ", keycode);
-	mlx_destroy_image(tmp->win.mlx, tmp->win.img);
 	mprime(tmp);
-//	mlx_clear_window(tmp->win.mlx, tmp->win.win);
+	mlx_destroy_image(tmp->win.mlx, tmp->win.img);
 	tmp->win.img = mlx_new_image(tmp->win.mlx, WIDTH, HEIGHT);
 	start_draw(tmp);
 	mlx_put_image_to_window(tmp->win.mlx, tmp->win.win, tmp->win.img, 50, 50);

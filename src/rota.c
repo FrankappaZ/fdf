@@ -12,16 +12,9 @@
 
 #include "../inc/fdf.h"
 #include <math.h>
-
 void		map_rotation(t_coord *elem, t_fdf *map)
 {
-	t_dotp	tmp_dot;
-
-	tmp_dot = elem->dotp;
-	elem->dotp.x = (tmp_dot.x * cos(map->params.rad))
-		- (tmp_dot.y * sin(map->params.rad));
-	elem->dotp.y = (tmp_dot.y * cos(map->params.rad))
-		+ (tmp_dot.x * sin(map->params.rad));
+	ft_putendl("Refaire fonction rotation");
 }
 
 void		map_printer_p(t_coord *elem, t_fdf *map)

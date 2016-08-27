@@ -16,9 +16,9 @@
 static void		set_eyes_coord(t_fdf *map)
 {
 	ft_putendl("set_eyes_coord");
-	map->params.eyes.x = HEIGHT / 2;
-	map->params.eyes.y = WIDTH / 2;
-	map->params.eyes.z = map->params.eyes_z;
+	map->params.eyes.x = -(HEIGHT / 2);
+	map->params.eyes.y = -(WIDTH / 2);
+	map->params.eyes.z = 1;
 }
 
 void			set_proj_coord(t_coord *coord, t_fdf *map)

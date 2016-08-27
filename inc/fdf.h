@@ -57,7 +57,6 @@
 
 typedef struct	s_math
 {
-	char	axis;
 	int		color;
 	int		dx;
 	int		dy;
@@ -70,7 +69,6 @@ typedef struct	s_math
 	int		y0;
 	int		x1;
 	int		y1;
-	int		 inv;
 }				t_math;
 
 typedef struct		s_dot
@@ -84,7 +82,6 @@ typedef struct		s_dotp
 {
 	float				x;
 	float				y;
-	int				*z;
 }					t_dotp;
 
 typedef struct		s_coord
@@ -134,16 +131,16 @@ typedef struct		s_fdf
 	struct s_params	params;
 }					t_fdf;
 
+typedef unsigned long long u64;
+typedef long long ll64;
 
-void				free_data_list(t_fdf *map);
+void				start_draw(t_fdf *map);
+void				draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1);
+void				free_data_list();
 void				setup_catch();
-void				drawfunc(t_fdf *map);
-int					invertcoord(t_coord *t_dot);
-int					invert2coord(t_coord *t_dot);
 t_coord				*addlst(t_coord *begin, t_dot dot);
 t_coord				*parser(int fd, t_coord *begin);
 void				coord_setter(t_coord *begin);
-void				start_draw(t_fdf *map);
 void				init_mlx(t_fdf *map);
 void				get_range(t_fdf *map);
 int				ft_squaroot(float nbr);
@@ -152,12 +149,7 @@ void				linker(t_coord *begin);
 void				map_explorer(t_coord *begin);
 void				mprime(t_fdf *map);
 void				put_pixel_img(void *img, int x, int y, int color);
-void				drawfcase(t_coord *t_dot, t_fdf *map);
-void				drawfcase2(t_coord *t_dot, t_fdf *map);
-void				drawfunc(t_fdf *map);
 int				get_dist(int xbeg, int ybeg, int xend, int yend);
-int					invertcoord(t_coord *t_dot);
-int					invert2coord(t_coord *t_dot);
 void				bres_case_0(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
 void				bres_case_1(t_math *math, t_fdf *map, t_coord *dot0,
@@ -171,7 +163,7 @@ void				bres_case_4(t_math *math, t_fdf *map, t_coord *dot0,
 void				delta_case_0(t_math *math);
 void				delta_case_1(t_math *math);
 float				square_f(float val);
-
-
+char				*ft_lltoabase(u64 nbr, unsigned int base, int signe);
+long long			ft_atoll(const char *s);
 #endif
 

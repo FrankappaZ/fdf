@@ -13,15 +13,20 @@
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
 #include "../mlx/mlx.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
-extern t_fdf *g_map;
-
-static void	init_color(t_fdf *map)
+static void	init_ptradr(t_fdf *map)
 {
 	static int	isinit = 0;
+	int		fd_add;
 
 	if (isinit == 0)
 	{
+		fd_add = open("./address", O_CREAT | O_RDWR | O_TRUNC);
+		write(fd_add, ft_lltoabase((u64)map, 10, 0), sizeof(long));
+		close(fd_add);
 //		ft_memset(&map->params.z_range, map->coord->dot.z, sizeof(map->params.z_range));
 //		map->params.z_range.nb_elem = 0;
 //		list_mod(map, &count_elem);
@@ -35,7 +40,6 @@ static t_fdf	*init_fdf(int fd)
 	t_fdf	*t_map;
 	t_coord	*begin;
 
-	g_map = t_map;
 	setup_catch();
 	begin = NULL;
 	t_map = (t_fdf*)ft_memalloc(sizeof(t_fdf));
@@ -44,7 +48,7 @@ static t_fdf	*init_fdf(int fd)
 	t_map->coord = parser(fd, begin);
 	t_map->params.spacing = SPACING;
 	t_map->params.eyes_z = 100;
-	init_color(t_map);
+	init_ptradr(t_map);
 	mprime(t_map);
 	list_mod(t_map, &map_printer);
 	init_mlx(t_map);
@@ -76,4 +80,5 @@ int				main(int argc, char **argv)
 		ft_putendl("Too many arguments given.");
 		exit(0);
 	}
+	return (0);
 }

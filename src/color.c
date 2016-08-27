@@ -88,16 +88,3 @@ int			get_color(t_fdf *map, float p_beg, float prev, float next)
 	}
 	return (color_chose(p_now));
 }
-
-void	get_color_tab(t_fdf *map)
-{
-	int	*color_tab;
-
-		
-}
-
-
-
-
-
-

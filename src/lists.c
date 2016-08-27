@@ -24,11 +24,9 @@ static t_coord	*create_coord(t_dot dot)
 
 t_coord			*addlst(t_coord *begin, t_dot dot)
 {
-	int		y;
 	t_coord	*elem;
 	t_coord	*tmp;
 
-	y = 0;
 	elem = create_coord(dot);
 	tmp = begin;
 	if (begin == NULL)

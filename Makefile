@@ -25,16 +25,17 @@ SRC = ./src/mprime.c \
 	./src/delta_init.c \
 	./src/bres_cases.c \
 	./src/bresenham.c \
-	./src/line.c \
 	./src/rota.c \
 	./src/parser.c \
-	./src/lists.c
+	./src/lists.c \
+	./src/atoll.c \
+	./src/lltoa_base.c
 
 CC = gcc
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -g -Wall -Wextra
+CFLAGS = -g -Wall -Wextra -Werror
 
 .ONESHELL:
 all: LIBCOMPILE $(NAME)
