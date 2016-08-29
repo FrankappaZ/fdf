@@ -20,7 +20,7 @@
 # include "../libft/includes/libft.h"
 # define HEIGHT 500
 # define WIDTH 800
-# define SPACING 20
+# define SPACING 5
 # define RAD M_PI/4.
 # define TITLE "FDF_42"
 

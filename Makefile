@@ -35,7 +35,7 @@ CC = gcc
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra
 
 .ONESHELL:
 all: LIBCOMPILE $(NAME)
