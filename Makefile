@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abureau <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/08/30 10:26:17 by abureau           #+#    #+#              #
-#    Updated: 2016/08/30 10:26:17 by abureau          ###   ########.fr        #
+#    Created: 2016/08/30 12:42:35 by abureau           #+#    #+#              #
+#    Updated: 2016/08/30 12:42:35 by abureau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -21,6 +21,7 @@ SRC = ./src/atoll.c \
 	./src/get_dist.c \
 	./src/lists.c \
 	./src/square_f.c \
+	./src/delta_pos.c \
 	./src/bresenham.c \
 	./src/squaroot.c \
 	./src/lltoa_base.c \

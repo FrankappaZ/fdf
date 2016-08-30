@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -7,10 +6,9 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/09 17:31:42 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/30 12:39:16 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FDF_H
 # define FDF_H
@@ -55,116 +53,122 @@
 # define Y3 nexty->dotp.y
 
 
-typedef struct	s_math
+typedef struct			s_math
 {
-	int		color;
-	int		dx;
-	int		dy;
-	int		dp;
-	float		dist;
-	int		e;
-	int		deltaE;
-	int		deltaNE;
-	int		x0;
-	int		y0;
-	int		x1;
-	int		y1;
-}				t_math;
+	int					color;
+	int					dx;
+	int					dy;
+	int					dp;
+	float				dist;
+	int					e;
+	int					deltaE;
+	int					deltaNE;
+	int					x0;
+	int					y0;
+	int					x1;
+	int					y1;
+}						t_math;
 
-typedef struct		s_dot
-{
-	float				x;
-	float				y;
-	int				z;
-}					t_dot;
-
-typedef struct		s_dotp
+typedef struct			s_dot
 {
 	float				x;
 	float				y;
-}					t_dotp;
+	int					z;
+}						t_dot;
 
-typedef struct		s_coord
+typedef struct			s_dotp
 {
-	struct s_dot	dot;
-	struct s_dotp	dotp;
-	struct s_coord	*nextx;
-	struct s_coord	*nexty;
-//	struct s_dot	eyes;
-	int				p_val;
-}					t_coord;
+	float				x;
+	float				y;
+}						t_dotp;
 
-
-typedef struct		s_range
+typedef struct			s_coord
 {
-	int				l_range_z;
-	int				h_range_z;
-	int				range_z;
-	int				nb_elem;
+	struct s_dot		dot;
+	struct s_dotp		dotp;
+	struct s_coord		*nextx;
+	struct s_coord		*nexty;
+	int					p_val;
+}						t_coord;
+
+
+typedef struct			s_range
+{
+	int					l_range_z;
+	int					h_range_z;
+	int					range_z;
+	int					nb_elem;
 }
-					t_range;
+						t_range;
 
-typedef struct		s_params
+typedef struct			s_params
 {
-	struct s_range	z_range;
-	int				color_tab;
-	int				spacing;
-	int				hor_pad;
-	int				ver_pad;
-	int				z_mod;
-	int				eyes_z;
-	float			rad;
-	struct s_dot	eyes;
-}					t_params;
+	struct s_range		z_range;
+	int					color_tab;
+	int					spacing;
+	int					hor_pad;
+	int					ver_pad;
+	int					z_mod;
+	float				rad;
+	struct s_dot		eyes;
+}						t_params;
 
-typedef struct		s_win
+typedef struct			s_win
 {
-	void			*mlx;
-	void			*win;
-	void			*img;
-}					t_win;
+	void				*mlx;
+	void				*win;
+	void				*img;
+}						t_win;
 
-typedef struct		s_fdf
+typedef struct			s_fdf
 {
-	struct s_win	win;
-	struct s_coord	*coord;
-	struct s_params	params;
-}					t_fdf;
+	struct s_win		win;
+	struct s_coord		*coord;
+	struct s_params		params;
+}						t_fdf;
 
-typedef unsigned long u64;
-typedef long ll64;
+typedef unsigned long	u64;
+typedef long			ll64;
 
-u64					get_data_add(u64 ptr);
-void				start_draw(t_fdf *map);
-void				draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1);
-void				free_data_list();
-void				setup_catch();
-t_coord				*addlst(t_coord *begin, t_dot dot);
-t_coord				*parser(int fd, t_coord *begin);
-void				coord_setter(t_coord *begin);
-void				init_mlx(t_fdf *map);
-void				get_range(t_fdf *map);
-int				ft_squaroot(float nbr);
-int				get_color(t_fdf *map, float p_beg, float prev, float next);
-void				linker(t_coord *begin);
-void				map_explorer(t_coord *begin);
-void				mprime(t_fdf *map);
-void				put_pixel_img(void *img, int x, int y, int color);
-int				get_dist(int xbeg, int ybeg, int xend, int yend);
-void				bres_case_0(t_math *math, t_fdf *map, t_coord *dot0,
+char					*ft_lltoabase(u64 nbr, unsigned int base, int signe);
+float					square_f(float val);
+int						ft_squaroot(float nbr);
+int						get_color(t_fdf *map, float p_beg, float prev,
+	float next);
+int						get_dist(int xbeg, int ybeg, int xend, int yend);
+long long				ft_atoll(const char *s);
+t_coord					*addlst(t_coord *begin, t_dot dot);
+t_coord					*parser(int fd, t_coord *begin);
+u64						get_data_add(u64 ptr);
+void					bres_case_0(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
-void				bres_case_1(t_math *math, t_fdf *map, t_coord *dot0,
+void					bres_case_1(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
-void				bres_case_2(t_math *math, t_fdf *map, t_coord *dot0,
+void					bres_case_2(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
-void				bres_case_3(t_math *math, t_fdf *map, t_coord *dot0,
+void					bres_case_3(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
-void				bres_case_4(t_math *math, t_fdf *map, t_coord *dot0,
+void					bres_case_4(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
-void				delta_case_0(t_math *math);
-void				delta_case_1(t_math *math);
-float				square_f(float val);
-char				*ft_lltoabase(u64 nbr, unsigned int base, int signe);
-long long			ft_atoll(const char *s);
+void					coord_setter(t_coord *begin);
+void					delta_case_0(t_math *math);
+void					delta_case_1(t_math *math);
+void					draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1);
+void					dx_inf_dy(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1);
+void					dx_sup_dy(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1);
+void					dx_sup_mdy(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1);
+void					free_data_list();
+void					get_range(t_fdf *map);
+void					init_mlx(t_fdf *map);
+void					linker(t_coord *begin);
+void					map_explorer(t_coord *begin);
+void					mdx_sup_dy(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1);
+void					mprime(t_fdf *map);
+void					put_pixel_img(void *img, int x, int y, int color);
+void					setup_catch();
+void					start_draw(t_fdf *map);
 #endif
-

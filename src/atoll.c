@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   atoll.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/20 18:36:17 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/03/07 15:48:25 by rcavadas         ###   ########.fr       */
+/*   Created: 2016/08/30 11:43:49 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/08/30 11:43:52 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/includes/libft.h"
 #include "../inc/fdf.h"
 
-static void		ft_initlongvar(ll64 *i, int *p, int *state)
+static void			ft_initlongvar(ll64 *i, int *p, int *state)
 {
 	*i = 0;
 	*p = 0;
@@ -30,9 +30,9 @@ static long long	ft_return(ll64 i, int p, int state)
 	return (i);
 }
 
-long long		ft_atoll(const char *s)
+long long			ft_atoll(const char *s)
 {
-	long long	i;
+	ll64	i;
 	int		state;
 	int		p;
 	char	*str;
