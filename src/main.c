@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 12:44:10 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/30 12:48:03 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_fdf	*init_fdf(int fd)
 	t_map->params.rad = RAD;
 	t_map->coord = parser(fd, begin);
 	t_map->params.spacing = SPACING;
-	t_map->params.eyes_z = 100;
+	t_map->params.eyes.z = 100;
 	init_ptradr(t_map);
 	mprime(t_map);
 		printf("address lecture %lu\n", get_data_add(0));
