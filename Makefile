@@ -5,31 +5,33 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abureau <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/08/23 15:03:15 by abureau           #+#    #+#              #
-#    Updated: 2016/08/23 15:03:15 by abureau          ###   ########.fr        #
+#    Created: 2016/08/30 10:26:17 by abureau           #+#    #+#              #
+#    Updated: 2016/08/30 10:26:17 by abureau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = fdf
 
-SRC = ./src/mprime.c \
-	./src/square_f.c \
-	./src/get_dist.c \
-	./src/list_func.c \
-	./src/color.c \
-	./src/catch.c \
-	./src/m_source.c \
-	./src/squaroot.c \
-	./src/range.c \
-	./src/main.c \
+SRC = ./src/atoll.c \
+	./src/data.c \
 	./src/delta_init.c \
-	./src/bres_cases.c \
-	./src/bresenham.c \
-	./src/rota.c \
+	./src/get_center.c \
+	./src/main.c \
 	./src/parser.c \
+	./src/get_dist.c \
 	./src/lists.c \
-	./src/atoll.c \
-	./src/lltoa_base.c
+	./src/square_f.c \
+	./src/bresenham.c \
+	./src/squaroot.c \
+	./src/lltoa_base.c \
+	./src/m_source.c \
+	./src/range.c \
+	./src/list_func.c \
+	./src/bres_cases.c \
+	./src/catch.c \
+	./src/color.c \
+	./src/mprime.c \
+	./src/rota.c
 
 CC = gcc
 
@@ -37,17 +39,16 @@ OBJ = $(SRC:.c=.o)
 
 CFLAGS = -g -Wall -Wextra
 
-.ONESHELL:
 all: LIBCOMPILE $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $@ $^ -I libft/includes -L libft/ -lft -L mlx/ -lmlx -lXext -lX11 -lm -lbsd
+	$(CC) -o $@ $^ -I libft/includes -L libft/ -lft -L/usr/local/lib/ -I/usr/local/include -lmlx -framework OpenGL -framework AppKit
 
 LIBCOMPILE:
-	make -C libft/
+	 make -C libft/
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I libft/includes -I mlx -o $@ -c $<
+	$(CC) $(CFLAGS) -I libft/includes -o $@ -c $<
 
 clean:
 	rm -f $(OBJ)

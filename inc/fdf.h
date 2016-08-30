@@ -15,12 +15,12 @@
 #ifndef FDF_H
 # define FDF_H
 # include <math.h>
-# include "../mlx/mlx.h"
+#include <mlx.h>
 # include <stdio.h>
 # include "../libft/includes/libft.h"
 # define HEIGHT 500
 # define WIDTH 800
-# define SPACING 5
+# define SPACING 50
 # define RAD M_PI/4.
 # define TITLE "FDF_42"
 
@@ -131,9 +131,10 @@ typedef struct		s_fdf
 	struct s_params	params;
 }					t_fdf;
 
-typedef unsigned long long u64;
-typedef long long ll64;
+typedef unsigned long u64;
+typedef long ll64;
 
+u64					get_data_add(u64 ptr);
 void				start_draw(t_fdf *map);
 void				draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1);
 void				free_data_list();

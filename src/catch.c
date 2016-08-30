@@ -1,7 +1,8 @@
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
 #include <signal.h>
-
+#include <mlx.h>
+#include <stdlib.h>
 /*
 *
 *	prevent ctrl+c for free data before exit
@@ -21,29 +22,25 @@ static void	free_mlx(t_fdf *map)
 void	free_data_list()
 {
 	t_fdf		*map;
-	char		*address;
 	int		fd_add;
 	static int	isok = 0;
 
+	ft_putendl("free data begin");
+
 	if (isok)
 		exit(0);	
-	address = NULL;
-	address = ft_memalloc(sizeof(long));
-	fd_add = open("./address", O_RDWR);
-	get_next_line(fd_add, &address);
-	ft_putendl(address);
-	map = (void*) ft_atoll(address); 	
+	map = (t_fdf *) get_data_add(0);
 	list_mod(map, free_elem);
+	ft_putendl("free_data_struct");
 	free(map->coord);
 	free_mlx(map);
-	free(address);
-	address = NULL;
 	isok = 1;
 	exit(0);
 }
 
 static void sig_handler(int signo)
 {
+		ft_putendl("sig catch");
 	if (signo == SIGINT)
 	{
 		ft_putendl("ctrl+c protection, all item free and exit");

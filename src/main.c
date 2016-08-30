@@ -6,13 +6,12 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/09 16:29:03 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/30 10:44:46 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
-#include "../mlx/mlx.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -20,13 +19,11 @@
 static void	init_ptradr(t_fdf *map)
 {
 	static int	isinit = 0;
-	int		fd_add;
 
 	if (isinit == 0)
 	{
-		fd_add = open("./address", O_CREAT | O_RDWR | O_TRUNC);
-		write(fd_add, ft_lltoabase((u64)map, 10, 0), sizeof(long));
-		close(fd_add);
+		get_data_add((u64)map);
+		printf("address %lu\n", (u64) map);
 //		ft_memset(&map->params.z_range, map->coord->dot.z, sizeof(map->params.z_range));
 //		map->params.z_range.nb_elem = 0;
 //		list_mod(map, &count_elem);
@@ -50,6 +47,7 @@ static t_fdf	*init_fdf(int fd)
 	t_map->params.eyes_z = 100;
 	init_ptradr(t_map);
 	mprime(t_map);
+		printf("address lecture %lu\n", get_data_add(0));
 	list_mod(t_map, &map_printer);
 	init_mlx(t_map);
 	return (t_map);
