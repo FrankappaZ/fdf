@@ -28,11 +28,10 @@ void	free_data_list()
 	ft_putendl("free data begin");
 
 	if (isok)
-		exit(0);	
+		exit(0);
 	map = (t_fdf *) get_data_add(0);
 	list_mod(map, free_elem);
-	ft_putendl("free_data_struct");
-	free(map->coord);
+	ft_putendl("free_data_mlx");
 	free_mlx(map);
 	isok = 1;
 	exit(0);
@@ -51,6 +50,11 @@ static void sig_handler(int signo)
 		ft_putendl("Segfault Protection !, all item free and exit");
 		free_data_list();
 	}
+	if (signo == SIGABRT)
+	{
+		ft_putendl("SIGABRT Protection !, all item free and exit");
+		exit(0);
+	}
 }
 
 void	setup_catch()
@@ -58,5 +62,7 @@ void	setup_catch()
 	if (signal(SIGSEGV, sig_handler) == SIG_ERR)
 		ft_putendl("error while catching signal\n");
 	if (signal(SIGINT, sig_handler) == SIG_ERR)
+		ft_putendl("error while catching signal\n");
+	if (signal(SIGABRT, sig_handler) == SIG_ERR)
 		ft_putendl("error while catching signal\n");
 }

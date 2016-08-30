@@ -6,25 +6,9 @@ void		free_elem(t_coord *elem, t_fdf *map)
 {
 	if (map)
 	{
-		ft_putendl("free coord :");
-		if(elem->nextx)
-		{
-			ft_putendl("\tfree link nextx");
-			free(elem->nextx);
-			elem->nextx = NULL;
-		}
-		if(elem->nexty)
-		{
-			ft_putendl("\tfree link nexty");
-			free(elem->nexty);
-			elem->nexty = NULL;
-		}
-		if(elem != NULL)
-		{
-			ft_putendl("\tfree elem");
+			ft_putendl("free(elem)");
 			free(elem);
 			elem = NULL;
-		}
 	}
 }
 
