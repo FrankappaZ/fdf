@@ -6,12 +6,13 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 16:35:06 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 12:14:28 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/30 14:50:44 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 #include <math.h>
+
 void		map_rotation(t_coord *elem, t_fdf *map)
 {
 	ft_putendl("Refaire fonction rotation");
@@ -73,8 +74,8 @@ void		list_mod(t_fdf *map, void (*ptr_func)(t_coord*, t_fdf*))
 void		set_p_value(t_coord *elem, t_fdf *map)
 {
 	if (map->RANGE != 0)
-	elem->p_val = ((elem->dot.z - map->LOW_RANGE) * 100 / (map->HIGH_RANGE -
+		elem->p_val = ((elem->dot.z - map->LOW_RANGE) * 100 / (map->HIGH_RANGE -
 		map->LOW_RANGE));
 	else
-	elem->p_val = 0;
+		elem->p_val = 0;
 }

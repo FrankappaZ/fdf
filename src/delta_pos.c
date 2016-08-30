@@ -6,9 +6,10 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 12:38:25 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 12:50:44 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/30 14:53:00 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../inc/fdf.h"
 
 void	dx_inf_dy(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)

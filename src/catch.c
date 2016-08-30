@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   catch.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/08/30 13:03:44 by rcavadas          #+#    #+#             */
+/*   Updated: 2016/08/30 14:21:29 by rcavadas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
 #include <signal.h>
 #include <mlx.h>
 #include <stdlib.h>
+
 /*
-*
-*	prevent ctrl+c for free data before exit
-*
+**prevent ctrl+c for free data before exit
 */
+
 static void	free_mlx(t_fdf *map)
 {
 	ft_putendl("free mlx :");
@@ -17,19 +29,17 @@ static void	free_mlx(t_fdf *map)
 	free(map->win.win);
 	ft_putendl("\tfree mlx");
 	free(map->win.mlx);
-
 }
-void	free_data_list()
+
+void		free_data_list(void)
 {
 	t_fdf		*map;
-	int		fd_add;
 	static int	isok = 0;
 
 	ft_putendl("free data begin");
-
 	if (isok)
 		exit(0);
-	map = (t_fdf *) get_data_add(0);
+	map = (t_fdf *)get_data_add(0);
 	list_mod(map, free_elem);
 	ft_putendl("free_data_mlx");
 	free_mlx(map);
@@ -37,9 +47,9 @@ void	free_data_list()
 	exit(0);
 }
 
-static void sig_handler(int signo)
+static void	sig_handler(int signo)
 {
-		ft_putendl("sig catch");
+	ft_putendl("sig catch");
 	if (signo == SIGINT)
 	{
 		ft_putendl("ctrl+c protection, all item free and exit");
@@ -57,7 +67,7 @@ static void sig_handler(int signo)
 	}
 }
 
-void	setup_catch()
+void		setup_catch(void)
 {
 	if (signal(SIGSEGV, sig_handler) == SIG_ERR)
 		ft_putendl("error while catching signal\n");

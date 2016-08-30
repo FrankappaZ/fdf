@@ -6,7 +6,7 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 17:50:30 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/09 19:54:06 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/30 14:32:51 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static void	init_math(t_math *math, t_coord *dot0, t_coord *dot1)
 	math->e = 0;
 }
 
-
 static void	dx_positive(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)
 {
 	if ((math->dy = math->y1 - math->y0) != 0)
@@ -40,14 +39,14 @@ static void	dx_positive(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)
 		while ((math->x0 = math->x0 + 1) != math->x1)
 		{
 			put_pixel_img(map->win.img, math->x0, math->y0, get_color(map,
-				get_dist(math->x0, math->y0, math->x1, math->y1) 
-				* 100 /	math->dist, dot0->dot.z, dot1->dot.z));
-
+				get_dist(math->x0, math->y0, math->x1, math->y1)
+				* 100 / math->dist, dot0->dot.z, dot1->dot.z));
 		}
 	}
 }
 
-static void	dx_n_positive(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1)
+static void	dx_n_positive(t_math *math, t_fdf *map, t_coord *dot0,
+	t_coord *dot1)
 {
 	if ((math->dy = math->y1 - math->y0) != 0)
 	{
@@ -59,14 +58,13 @@ static void	dx_n_positive(t_math *math, t_fdf *map, t_coord *dot0, t_coord *dot1
 	else
 	{
 		while ((math->x0 = math->x0 - 1) != math->x1)
-		{	
+		{
 			put_pixel_img(map->win.img, math->x0, math->y0, get_color(map,
-				get_dist(math->x0, math->y0, math->x1, math->y1) 
-				* 100 /	math->dist, dot0->dot.z, dot1->dot.z));
+				get_dist(math->x0, math->y0, math->x1, math->y1)
+				* 100 / math->dist, dot0->dot.z, dot1->dot.z));
 		}
 	}
 }
-
 
 void		draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1)
 {
@@ -86,17 +84,6 @@ void		draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1)
 		bres_case_4(&math, map, dot0, dot1);
 }
 
-static void	i_need_some_line(t_fdf *map, t_coord *tmp)
-{
-	if (tmp->dotp.y <= HEIGHT && tmp->dotp.x <= WIDTH)
-	{
-			if (tmp->nextx)
-				draw_segment(map, tmp, tmp->nextx);
-			if (tmp->nexty)
-				draw_segment(map, tmp, tmp->nexty);
-	}
-}
-
 void		start_draw(t_fdf *map)
 {
 	t_coord	*tmp;
@@ -109,7 +96,13 @@ void		start_draw(t_fdf *map)
 		cursory = cursory->nexty;
 		while (tmp != NULL)
 		{
-			i_need_some_line(map, tmp);
+			if (tmp->dotp.y <= HEIGHT && tmp->dotp.x <= WIDTH)
+			{
+				if (tmp->nextx)
+					draw_segment(map, tmp, tmp->nextx);
+				if (tmp->nexty)
+					draw_segment(map, tmp, tmp->nexty);
+			}
 			tmp = tmp->nextx;
 		}
 	}

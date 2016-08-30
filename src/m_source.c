@@ -6,35 +6,42 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 16:48:51 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 12:44:09 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/30 14:48:47 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
+
+static int	keys(int keycode, t_fdf *tmp)
+{
+	if (keycode == 53)
+		free_data_list();
+	if (keycode == 116)
+		tmp->params.eyes.z += 5;
+	if (keycode == 121)
+		tmp->params.eyes.z -= 5;
+	if (keycode == 126)
+		tmp->params.eyes.y += 5;
+	if (keycode == 124)
+		tmp->params.eyes.x -= 5;
+	if (keycode == 125)
+		tmp->params.eyes.y -= 5;
+	if (keycode == 123)
+		tmp->params.eyes.x += 5;
+	if (keycode == 65307)
+		free_data_list();
+	if (keycode == 65363)
+		list_mod(tmp, &map_rotation);
+	return (keycode);
+}
+
 static int	my_key_func(int keycode, void *param)
 {
 	t_fdf	*tmp;
 
 	tmp = (t_fdf*)param;
-	if (keycode == 53)
-		free_data_list();
-	if (keycode == 116)
-		tmp->params.eyes.z +=5;
-	if (keycode == 121)
-		tmp->params.eyes.z -=5;
-	if (keycode == 126)
-		tmp->params.eyes.y +=5;
-	if (keycode == 124)
-		tmp->params.eyes.x -=5;
-	if (keycode == 125)
-		tmp->params.eyes.y -=5;
-	if (keycode == 123)
-		tmp->params.eyes.x +=5;
-	if (keycode == 65307)
-		free_data_list();
-	if (keycode == 65363)
-		list_mod(tmp, &map_rotation);
+	keys(keycode, tmp);
 	ft_putstrnb("keycode : ", keycode);
 	mprime(tmp);
 	mlx_destroy_image(tmp->win.mlx, tmp->win.img);
@@ -86,7 +93,6 @@ void		init_mlx(t_fdf *map)
 	map->win.mlx = mlx_init();
 	map->win.win = mlx_new_window(map->win.mlx, WIDTH, HEIGHT, TITLE);
 	map->win.img = mlx_new_image(map->win.mlx, WIDTH, HEIGHT);
-//	print_map_dots(map);
 	start_draw(map);
 	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, 50, 50);
 	mlx_hook(map->win.win, 2, 1, my_key_func, map);

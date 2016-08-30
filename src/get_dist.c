@@ -6,7 +6,7 @@
 /*   By: abureau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 20:02:42 by abureau           #+#    #+#             */
-/*   Updated: 2016/08/09 20:10:08 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/30 14:23:49 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		get_dist(int xbeg, int ybeg, int xend, int yend)
 {
 	float	sqrx;
 	float	sqry;
-	int	sqrt;
+	int		sqrt;
 
 	sqrx = (square_f(xend - xbeg));
 	sqry = (square_f(yend - ybeg));
