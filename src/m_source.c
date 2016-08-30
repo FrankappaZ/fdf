@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 16:48:51 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 14:48:47 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/30 15:09:55 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ static int	keys(int keycode, t_fdf *tmp)
 	if (keycode == 53)
 		free_data_list();
 	if (keycode == 116)
-		tmp->params.eyes.z += 5;
+		tmp->params.eyes.z += STEP;
 	if (keycode == 121)
-		tmp->params.eyes.z -= 5;
+		tmp->params.eyes.z -= STEP;
 	if (keycode == 126)
-		tmp->params.eyes.y += 5;
+		tmp->params.eyes.y += STEP;
 	if (keycode == 124)
-		tmp->params.eyes.x -= 5;
+		tmp->params.eyes.x -= STEP;
 	if (keycode == 125)
-		tmp->params.eyes.y -= 5;
+		tmp->params.eyes.y -= STEP;
 	if (keycode == 123)
-		tmp->params.eyes.x += 5;
+		tmp->params.eyes.x += STEP;
 	if (keycode == 65307)
 		free_data_list();
 	if (keycode == 65363)

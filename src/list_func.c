@@ -6,7 +6,7 @@
 /*   By: abureau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 14:09:22 by abureau           #+#    #+#             */
-/*   Updated: 2016/08/30 14:25:15 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/30 15:29:08 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	free_elem(t_coord *elem, t_fdf *map)
 {
 	if (map)
 	{
+		if (elem->nextx)
+			elem->nextx = NULL;
+		if (elem->nexty)
+			elem->nexty = NULL;
 		ft_putendl("free(elem)");
 		free(elem);
 		elem = NULL;
@@ -42,8 +46,9 @@ t_coord	*get_last_elem(t_coord *elem)
 
 void	set_last_elem(t_coord *elem, t_fdf *map)
 {
-	if (!elem->nextx)
-		if (!elem->nexty)
-			if (elem)
-				get_last_elem(elem);
+	if (map)
+		if (!elem->nextx)
+			if (!elem->nexty)
+				if (elem)
+					get_last_elem(elem);
 }

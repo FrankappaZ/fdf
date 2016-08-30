@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 14:43:08 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/30 15:34:09 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,6 @@ static void	init_ptradr(t_fdf *map)
 	if (isinit == 0)
 	{
 		get_data_add((u64)map);
-		printf("address %lu\n", (u64) map);
-//		ft_memset(&map->params.z_range, map->coord->dot.z, sizeof(map->params.z_range));
-//		map->params.z_range.nb_elem = 0;
-//		list_mod(map, &count_elem);
-//		list_mod(map, &get_range);
 		isinit = 1;
 	}
 }
@@ -44,15 +39,10 @@ static t_fdf	*init_fdf(int fd)
 	t_map->params.rad = RAD;
 	t_map->coord = parser(fd, begin);
 	t_map->params.spacing = SPACING;
-	t_map->params.eyes.z = 100;
 	init_ptradr(t_map);
 	mprime(t_map);
-		printf("address lecture %lu\n", get_data_add(0));
 	list_mod(t_map, &set_last_elem);
 	list_mod(t_map, &map_printer_p);
-	ft_putstr("get_center : \n");
-	ft_putstrnb("x = ", get_center(t_map).x);
-	ft_putstrnb("y = ", get_center(t_map).y);
 	init_mlx(t_map);
 	return (t_map);
 }

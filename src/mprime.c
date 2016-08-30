@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 14:24:46 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 14:34:35 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/30 15:31:23 by rcavadas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void		set_proj_coord(t_coord *coord, t_fdf *map)
 	sec_div = (map->params.eyes.z + coord->dot.z);
 	if (sec_div <= 0)
 		sec_div = 1;
-	ft_putnbrnl(map->params.eyes.z);
 	coord->dotp.x = (map->params.eyes.z * (coord->dot.x - map->params.eyes.x)) /
 	sec_div + map->params.eyes.x;
 	coord->dotp.y = (map->params.eyes.z * (coord->dot.y - map->params.eyes.y)) /

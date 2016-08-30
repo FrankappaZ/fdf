@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abureau <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/08/30 12:42:35 by abureau           #+#    #+#              #
-#    Updated: 2016/08/30 12:42:35 by abureau          ###   ########.fr        #
+#    Created: 2016/08/30 15:04:21 by abureau           #+#    #+#              #
+#    Updated: 2016/08/30 15:04:21 by abureau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,7 +26,6 @@ SRC = ./src/atoll.c \
 	./src/squaroot.c \
 	./src/lltoa_base.c \
 	./src/m_source.c \
-	./src/range.c \
 	./src/list_func.c \
 	./src/bres_cases.c \
 	./src/catch.c \
