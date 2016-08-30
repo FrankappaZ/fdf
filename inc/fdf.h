@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 14:18:32 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/30 14:43:10 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../libft/includes/libft.h"
 # define HEIGHT 500
 # define WIDTH 800
-# define SPACING 50
+# define SPACING 10
 # define RAD M_PI/4.
 # define TITLE "FDF_42"
 
@@ -130,6 +130,7 @@ typedef struct			s_fdf
 typedef unsigned long	u64;
 typedef long			ll64;
 
+t_dot					get_center(t_fdf *map);
 char					*ft_lltoabase(u64 nbr, unsigned int base, int signe);
 float					square_f(float val);
 int						ft_squaroot(float nbr);

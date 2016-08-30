@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 12:48:03 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/30 14:43:08 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,11 @@ static t_fdf	*init_fdf(int fd)
 	init_ptradr(t_map);
 	mprime(t_map);
 		printf("address lecture %lu\n", get_data_add(0));
-	list_mod(t_map, &map_printer);
+	list_mod(t_map, &set_last_elem);
+	list_mod(t_map, &map_printer_p);
+	ft_putstr("get_center : \n");
+	ft_putstrnb("x = ", get_center(t_map).x);
+	ft_putstrnb("y = ", get_center(t_map).y);
 	init_mlx(t_map);
 	return (t_map);
 }
