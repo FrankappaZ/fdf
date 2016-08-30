@@ -6,7 +6,7 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 17:50:30 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 14:32:51 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/30 16:14:30 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void		start_draw(t_fdf *map)
 	t_coord	*cursory;
 
 	cursory = map->coord;
+	put_pixel_img(map->win.img, map->coord->dotp.x, map->coord->dotp.y, CWHI);
 	while (cursory != NULL)
 	{
 		tmp = cursory;

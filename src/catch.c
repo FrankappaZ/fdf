@@ -6,7 +6,7 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 13:03:44 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 14:21:29 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/30 15:47:39 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,12 @@ void		free_data_list(void)
 	if (isok)
 		exit(0);
 	map = (t_fdf *)get_data_add(0);
-	list_mod(map, free_elem);
+	if (map)
+		if (map->coord)
+			list_mod(map, free_elem);
 	ft_putendl("free_data_mlx");
-	free_mlx(map);
+	if (map)
+		free_mlx(map);
 	isok = 1;
 	exit(0);
 }
