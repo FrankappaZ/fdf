@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 14:24:46 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 15:31:23 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/30 16:19:07 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	set_eyes_coord(t_fdf *map)
 	ft_putendl("set_eyes_coord");
 	map->params.eyes.x = -(HEIGHT / 2);
 	map->params.eyes.y = -(WIDTH / 2);
-	map->params.eyes.z = 50;
+	map->params.eyes.z = 100;
 }
 
 void		set_proj_coord(t_coord *coord, t_fdf *map)

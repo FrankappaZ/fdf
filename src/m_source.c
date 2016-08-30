@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 16:48:51 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 15:09:55 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/30 16:22:49 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	my_key_func(int keycode, void *param)
 	mlx_destroy_image(tmp->win.mlx, tmp->win.img);
 	tmp->win.img = mlx_new_image(tmp->win.mlx, WIDTH, HEIGHT);
 	start_draw(tmp);
-	mlx_put_image_to_window(tmp->win.mlx, tmp->win.win, tmp->win.img, 50, 50);
+	mlx_put_image_to_window(tmp->win.mlx, tmp->win.win, tmp->win.img, 1, 1);
 	return (0);
 }
 
@@ -94,7 +94,7 @@ void		init_mlx(t_fdf *map)
 	map->win.win = mlx_new_window(map->win.mlx, WIDTH, HEIGHT, TITLE);
 	map->win.img = mlx_new_image(map->win.mlx, WIDTH, HEIGHT);
 	start_draw(map);
-	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, 50, 50);
+	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, 1, 1);
 	mlx_hook(map->win.win, 2, 1, my_key_func, map);
 	mlx_loop(map->win.mlx);
 }
