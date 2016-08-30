@@ -6,7 +6,7 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 16:38:54 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/09 16:39:03 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/30 14:19:06 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ROTA_H
 # include "./fdf.h"
 
+void		set_last_elem(t_coord *elem, t_fdf *map);
+t_coord		*get_last_elem(t_coord *elem);
 void		list_mod(t_fdf *map, void (*ptr_func)(t_coord*, t_fdf*));
 void		free_elem(t_coord *elem, t_fdf *map);
 void		map_printer(t_coord *elem, t_fdf *map);
