@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 16:04:28 by abureau          ###   ########.fr       */
+/*   Updated: 2016/08/30 17:39:43 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+
 
 static void	init_ptradr(t_fdf *map)
 {
