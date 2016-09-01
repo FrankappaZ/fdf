@@ -6,7 +6,7 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 16:35:06 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 14:50:44 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/08/31 13:48:48 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,19 @@ void		list_mod(t_fdf *map, void (*ptr_func)(t_coord*, t_fdf*))
 {
 	t_coord	*first_elem;
 	t_coord	*cursor;
+	t_coord	*tmpx;
 
 	first_elem = map->coord;
 	while (first_elem)
 	{
 		cursor = first_elem;
+		first_elem = first_elem->nexty;
 		while (cursor)
 		{
+			tmpx = cursor->nextx;
 			ptr_func(cursor, map);
-			cursor = cursor->nextx;
+			cursor = tmpx;
 		}
-		first_elem = first_elem->nexty;
 	}
 }
 

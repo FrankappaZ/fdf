@@ -6,13 +6,13 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 16:48:51 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 16:22:49 by abureau          ###   ########.fr       */
+/*   Updated: 2016/09/01 11:52:32 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
-
+#include <mlx.h>
 static int	keys(int keycode, t_fdf *tmp)
 {
 	if (keycode == 53)
@@ -46,6 +46,7 @@ static int	my_key_func(int keycode, void *param)
 	mprime(tmp);
 	mlx_destroy_image(tmp->win.mlx, tmp->win.img);
 	tmp->win.img = mlx_new_image(tmp->win.mlx, WIDTH, HEIGHT);
+	draw_def(tmp);
 	start_draw(tmp);
 	mlx_put_image_to_window(tmp->win.mlx, tmp->win.win, tmp->win.img, 1, 1);
 	return (0);
@@ -93,8 +94,11 @@ void		init_mlx(t_fdf *map)
 	map->win.mlx = mlx_init();
 	map->win.win = mlx_new_window(map->win.mlx, WIDTH, HEIGHT, TITLE);
 	map->win.img = mlx_new_image(map->win.mlx, WIDTH, HEIGHT);
+	map->win.defimg = mlx_new_image(map->win.mlx, WIDTHD+5, HEIGHTD+5);
 	start_draw(map);
+	draw_def(map);
 	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, 1, 1);
+	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.defimg, 10, 10);
 	mlx_hook(map->win.win, 2, 1, my_key_func, map);
 	mlx_loop(map->win.mlx);
 }

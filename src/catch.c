@@ -6,7 +6,7 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 13:03:44 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 15:47:39 by abureau          ###   ########.fr       */
+/*   Updated: 2016/09/01 12:04:54 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,23 @@
 /*
 **prevent ctrl+c for free data before exit
 */
+
+static void	free_def(t_coord *def)
+{
+	ft_putendl("Free definition :");
+	if (def)
+	{
+		if (def->nextx)
+		{
+			if (def->nexty->nexty)
+				free(def->nexty->nexty);
+			if (def->nexty)
+				free(def->nexty);
+			free(def->nextx);
+		}
+		free(def);
+	}
+}
 
 static void	free_mlx(t_fdf *map)
 {
@@ -41,11 +58,15 @@ void		free_data_list(void)
 		exit(0);
 	map = (t_fdf *)get_data_add(0);
 	if (map)
+	{
 		if (map->coord)
 			list_mod(map, free_elem);
-	ft_putendl("free_data_mlx");
-	if (map)
+		ft_putendl("free_data_mlx");
+		if (map->defcoord)
+			free_def(map->defcoord);
 		free_mlx(map);
+	}
+	if (map)
 	isok = 1;
 	exit(0);
 }
