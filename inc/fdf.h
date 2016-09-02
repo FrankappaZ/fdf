@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/09/01 11:49:26 by abureau          ###   ########.fr       */
+/*   Updated: 2016/09/01 13:51:14 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ typedef struct			s_fdf
 typedef unsigned long	u64;
 typedef long			ll64;
 
-void					drawdef(t_fdf *map);
+void					draw_def(t_fdf *map);
 t_dot					get_center(t_fdf *map);
 t_coord					*init_def_coord();
 char					*ft_lltoabase(u64 nbr, unsigned int base, int signe);

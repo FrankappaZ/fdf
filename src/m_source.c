@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/29 16:48:51 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/09/01 11:52:32 by abureau          ###   ########.fr       */
+/*   Updated: 2016/09/02 14:25:46 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,18 @@ static int	keys(int keycode, t_fdf *tmp)
 		tmp->params.eyes.x += STEP;
 	if (keycode == 65307)
 		free_data_list();
-	if (keycode == 65363)
+	if (keycode == 12)
+	{
+		tmp->params.rad += M_PI/4;
 		list_mod(tmp, &map_rotation);
+	}
 	return (keycode);
+}
+
+static void	string_print(t_fdf *tmp)
+{
+	mlx_string_put(tmp->win.mlx, tmp->win.win, WIDTH - WIDTHD - 45, 20, CWHI, ft_itoa(tmp->LOW_RANGE));
+	mlx_string_put(tmp->win.mlx, tmp->win.win, WIDTH - WIDTHD - 45, HEIGHTD + 10, CWHI, ft_itoa(tmp->HIGH_RANGE));
 }
 
 static int	my_key_func(int keycode, void *param)
@@ -46,9 +55,10 @@ static int	my_key_func(int keycode, void *param)
 	mprime(tmp);
 	mlx_destroy_image(tmp->win.mlx, tmp->win.img);
 	tmp->win.img = mlx_new_image(tmp->win.mlx, WIDTH, HEIGHT);
-	draw_def(tmp);
 	start_draw(tmp);
 	mlx_put_image_to_window(tmp->win.mlx, tmp->win.win, tmp->win.img, 1, 1);
+	mlx_put_image_to_window(tmp->win.mlx, tmp->win.win, tmp->win.defimg, WIDTH - WIDTHD - 10, 30);
+	string_print(tmp);
 	return (0);
 }
 
@@ -98,7 +108,8 @@ void		init_mlx(t_fdf *map)
 	start_draw(map);
 	draw_def(map);
 	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, 1, 1);
-	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.defimg, 10, 10);
+	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.defimg, WIDTH - WIDTHD - 10, 30);
+	string_print(map);
 	mlx_hook(map->win.win, 2, 1, my_key_func, map);
 	mlx_loop(map->win.mlx);
 }

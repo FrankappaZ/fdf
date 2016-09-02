@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/09/01 11:48:01 by abureau          ###   ########.fr       */
+/*   Updated: 2016/09/01 15:35:51 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ static t_fdf	*init_fdf(int fd)
 	ft_bzero(t_map, sizeof(t_fdf));
 	t_map->params.rad = RAD;
 	t_map->coord = parser(fd, begin);
-	t_map->defcoord = init_def_coord(t_map);
 	t_map->params.spacing = SPACING;
 	init_ptradr(t_map);
 	mprime(t_map);
 	list_mod(t_map, &set_last_elem);
 	list_mod(t_map, &map_printer_p);
+	t_map->defcoord = init_def_coord(t_map);
 	init_mlx(t_map);
 	return (t_map);
 }
