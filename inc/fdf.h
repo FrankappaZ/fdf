@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/09/01 13:51:14 by abureau          ###   ########.fr       */
+/*   Updated: 2016/09/12 15:58:54 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define STEP 25
 # define RAD M_PI/4.
 # define TITLE "FDF_42"
-
+#define RAND read(RND, )
 /*	ROOT_P = precision de la racine, change le nb de loop dans le cacul de la couleur accelere potenciellment le programme (default 10) */
 # define ROOT_P 2
 
@@ -91,6 +91,7 @@ typedef struct			s_coord
 	struct s_dotp		dotp;
 	struct s_coord		*nextx;
 	struct s_coord		*nexty;
+	int					isalive: 1;
 	int					p_val;
 }						t_coord;
 
@@ -113,6 +114,7 @@ typedef struct			s_params
 	int					ver_pad;
 	int					z_mod;
 	float				rad;
+	int					gol_start : 1 ;
 	struct s_dot		eyes;
 }						t_params;
 
@@ -135,6 +137,7 @@ typedef struct			s_fdf
 typedef unsigned long	u64;
 typedef long			ll64;
 
+void					center_eyes(t_fdf *map);
 void					draw_def(t_fdf *map);
 t_dot					get_center(t_fdf *map);
 t_coord					*init_def_coord();
