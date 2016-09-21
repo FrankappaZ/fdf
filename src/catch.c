@@ -13,7 +13,7 @@
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
 #include <signal.h>
-#include <mlx.h>
+#include "../mlx/mlx.h"
 #include <stdlib.h>
 
 /*

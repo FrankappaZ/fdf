@@ -67,15 +67,15 @@ void			linker(t_coord *begin)
 	}
 }
 
-void			coord_setter(t_coord *begin)
+void			coord_setter(t_coord *begin, t_params param)
 {
 	t_coord	*first_elem;
 	t_coord	*cursor;
 	t_dot	counters;
 
 	first_elem = begin;
-	counters.x = 0;
-	counters.y = 0;
+	counters.x = param.hor_pad / SPACING;
+	counters.y = param.ver_pad / SPACING;
 	while (first_elem)
 	{
 		cursor = first_elem;
@@ -88,7 +88,7 @@ void			coord_setter(t_coord *begin)
 		cursor->dot.x = counters.x++ * SPACING;
 		cursor->dot.y = counters.y * SPACING;
 		first_elem = first_elem->nexty;
-		counters.x = 0;
+		counters.x = param.hor_pad / SPACING;
 		counters.y++;
 	}
 }

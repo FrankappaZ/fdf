@@ -17,7 +17,16 @@ t_dot	get_center(t_fdf *map)
 {
 	t_dot		center;
 
-	center.x = (map->coord->dotp.x + get_last_elem(NULL)->dotp.x) / 2;
-	center.y = (map->coord->dotp.y + get_last_elem(NULL)->dotp.y) / 2;
+	center.x = (map->coord->dot.x + get_last_elem(map->coord)->dot.x) / 2;
+	center.y = (map->coord->dot.y + get_last_elem(map->coord)->dot.y) / 2;
+	return (center);
+}
+
+t_dot	get_centerp(t_fdf *map)
+{
+	t_dot		center;
+
+	center.x = (map->coord->dotp.x + get_last_elem(map->coord)->dotp.x) / 2;
+	center.y = (map->coord->dotp.y + get_last_elem(map->coord)->dotp.y) / 2;
 	return (center);
 }

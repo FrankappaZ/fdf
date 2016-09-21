@@ -113,7 +113,7 @@ typedef struct			s_params
 	int					hor_pad;
 	int					ver_pad;
 	int					z_mod;
-	float				rad;
+	float					rad;
 	int					gol_start : 1 ;
 	struct s_dot		eyes;
 }						t_params;
@@ -140,6 +140,8 @@ typedef long			ll64;
 void					center_eyes(t_fdf *map);
 void					draw_def(t_fdf *map);
 t_dot					get_center(t_fdf *map);
+void					coord_rotate(t_fdf *map, t_coord *begin, t_dot center);
+t_dot					get_centerp(t_fdf *map);
 t_coord					*init_def_coord();
 char					*ft_lltoabase(u64 nbr, unsigned int base, int signe);
 float					square_f(float val);
@@ -149,7 +151,7 @@ int						get_color(t_fdf *map, float p_beg, float prev,
 int						get_dist(int xbeg, int ybeg, int xend, int yend);
 long long				ft_atoll(const char *s);
 t_coord					*addlst(t_coord *begin, t_dot dot);
-t_coord					*parser(int fd, t_coord *begin);
+t_coord					*parser(int fd, t_coord *begin, t_params param);
 u64						get_data_add(u64 ptr);
 void					bres_case_0(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
@@ -161,7 +163,7 @@ void					bres_case_3(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
 void					bres_case_4(t_math *math, t_fdf *map, t_coord *dot0,
 	t_coord *dot1);
-void					coord_setter(t_coord *begin);
+void					coord_setter(t_coord *begin, t_params param);
 void					delta_case_0(t_math *math);
 void					delta_case_1(t_math *math);
 void					draw_segment(t_fdf *map, t_coord *dot0, t_coord *dot1);

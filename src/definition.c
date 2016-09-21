@@ -1,5 +1,5 @@
 #include "../inc/fdf.h"
-#include <mlx.h>
+#include "../mlx/mlx.h"
 
 static t_coord	*creat_coord(t_dot dot)
 {

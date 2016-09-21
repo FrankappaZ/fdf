@@ -22,18 +22,18 @@ static void	set_eyes_coord(t_fdf *map)
 	if (!isok)
 	{
 		ft_putendl("set_eyes_coord");
-		map->params.eyes.x = -(HEIGHT / 2);
-		map->params.eyes.y = -(WIDTH / 2);
-		map->params.eyes.z = 100;
+		map->params.eyes.x = WIDTH/2;
+		map->params.eyes.y = HEIGHT/2;
+		map->params.eyes.z = 50;
 		isok = 1;
 	}
 	else if (isok == 1)
 	{
 		ft_putendl("reset_eyes_coord");
-		ft_putnbr(get_center(map).x);
-		ft_putnbr(get_center(map).y);
-		map->params.eyes.x = center.x;
-		map->params.eyes.y = center.y;
+		center = get_center(map);
+		map->params.eyes.x = WIDTH/2;
+		map->params.eyes.y = HEIGHT/2;
+		map->params.eyes.z = 50;
 		isok = 2;
 	}
 }
@@ -65,13 +65,11 @@ void		set_proj_coord(t_coord *coord, t_fdf *map)
 			coord->dot.z = map->HIGH_RANGE;
 	}
 	close(fd);
-		sec_div = (map->params.eyes.z + coord->dot.z);
-	if (sec_div <= 0)
-		sec_div = 1;
-	coord->dotp.x = (map->params.eyes.z * (coord->dot.x - map->params.eyes.x)) /
-	sec_div + map->params.eyes.x;
-	coord->dotp.y = (map->params.eyes.z * (coord->dot.y - map->params.eyes.y)) /
-	sec_div + map->params.eyes.y;
+	sec_div = (map->params.eyes.z + coord->dot.z);
+	coord->dotp.x = ((map->params.eyes.z * (coord->dot.x - map->params.eyes.x)) /
+	sec_div) + map->params.eyes.x;
+	coord->dotp.y = ((map->params.eyes.z * (coord->dot.y - map->params.eyes.y)) /
+	sec_div ) + map->params.eyes.y;
 }
 
 void		mprime(t_fdf *map)

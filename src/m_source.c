@@ -12,7 +12,7 @@
 
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
-#include <mlx.h>
+#include "../mlx/mlx.h"
 
 static int	keys(int keycode, t_fdf *tmp)
 {
@@ -22,29 +22,32 @@ static int	keys(int keycode, t_fdf *tmp)
 		tmp->params.eyes.z += STEP;
 	if (keycode == 121 && tmp->params.eyes.z != 0 + STEP)
 		tmp->params.eyes.z -= STEP;
-	if (keycode == 126)
+	if (keycode == 126 || keycode == 65364)
 		tmp->params.eyes.y += STEP;
-	if (keycode == 124)
+	if (keycode == 124 || keycode == 65361)
 		tmp->params.eyes.x -= STEP;
-	if (keycode == 125)
+	if (keycode == 125 || keycode == 65362)
 		tmp->params.eyes.y -= STEP;
-	if (keycode == 123)
+	if (keycode == 123 || keycode == 65363)
 		tmp->params.eyes.x += STEP;
 	if (keycode == 12)
 	{
 		tmp->params.rad += M_PI / 4;
 		list_mod(tmp, &map_rotation);
 	}
-	if (keycode == 2)
+	if (keycode == 2 || keycode == 100)
 		tmp->params.hor_pad += 5;
-	if (keycode == 0)
+	if (keycode == 0 || keycode == 113)
 		tmp->params.hor_pad -= 5;
-	if (keycode == 13)
+	if (keycode == 13 || keycode == 122)
 		tmp->params.ver_pad -= 5;
-	if (keycode == 1)
+	if (keycode == 1 || keycode == 115)
 		tmp->params.ver_pad += 5;
 	if (keycode == 5)
 		tmp->params.gol_start = 1;
+	if (keycode == 97)
+		coord_rotate(tmp, tmp->coord, get_center(tmp));
+
 	return (keycode);
 }
 
@@ -55,12 +58,13 @@ static int	my_key_func(int keycode, void *param)
 	tmp = (t_fdf*)param;
 	keys(keycode, tmp);
 	ft_putstrnb("keycode : ", keycode);
+	coord_setter(tmp->coord, tmp->params);
 	mprime(tmp);
 	mlx_clear_window(tmp->win.mlx, tmp->win.win);
 	mlx_destroy_image(tmp->win.mlx, tmp->win.img);
 	tmp->win.img = mlx_new_image(tmp->win.mlx, WIDTH, HEIGHT);
 	start_draw(tmp);
-	mlx_put_image_to_window(tmp->win.mlx, tmp->win.win, tmp->win.img, 1 + tmp->params.hor_pad, 1 + tmp->params.ver_pad);
+	mlx_put_image_to_window(tmp->win.mlx, tmp->win.win, tmp->win.img, 1, 1);
 	mlx_put_image_to_window(tmp->win.mlx, tmp->win.win, tmp->win.defimg,
 			WIDTH - WIDTHD - 10, 30);
 	mlx_string_put(tmp->win.mlx, tmp->win.win, WIDTH - WIDTHD - 45,
@@ -113,6 +117,7 @@ static int	reloop(t_fdf *param)
 
 	tmp = (t_fdf*)param;
 	mprime(tmp);
+	coord_setter(tmp->coord, tmp->params);
 	mlx_destroy_image(tmp->win.mlx, tmp->win.img);
 	tmp->win.img = mlx_new_image(tmp->win.mlx, WIDTH, HEIGHT);
 	start_draw(tmp);

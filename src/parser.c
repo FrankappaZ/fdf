@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
+#include <math.h>
 
 static t_dot	create_dot(int value, int y)
 {
@@ -37,7 +38,44 @@ static t_coord	*get_values(char *line, int y, t_coord *begin)
 	return (begin);
 }
 
-t_coord			*parser(int fd, t_coord *begin)
+t_dot			rotate_point(t_fdf *map, t_dot dot, t_dot center)
+{
+	float sn;
+	float cs;
+	float xnew;
+	float ynew;
+
+	sn = sin(RAD);
+	cs = cos(RAD);
+	dot.x -= center.x;
+	dot.y -= center.y;
+	xnew = dot.x * cs - dot.y * sn;
+	ynew = dot.x * sn + dot.y * cs;
+	dot.x = xnew + center.x;
+	dot.y = ynew + center.y;
+	return(dot);
+}
+
+void			coord_rotate(t_fdf *map, t_coord *begin, t_dot center)
+{
+	t_coord	*first_elem;
+	t_coord	*cursor;
+
+	first_elem = begin;
+	while (first_elem)
+	{
+		cursor = first_elem;
+		while (cursor->nextx)
+		{
+			cursor->dot = rotate_point(map ,cursor->dot, center);
+			cursor = cursor->nextx;
+		}
+		cursor->dot = rotate_point(map ,cursor->dot, center);
+		first_elem = first_elem->nexty;
+	}
+}
+
+t_coord			*parser(int fd, t_coord *begin, t_params param)
 {
 	char	*line;
 	int		y;
@@ -47,6 +85,6 @@ t_coord			*parser(int fd, t_coord *begin)
 	while (get_next_line(fd, &line))
 		begin = get_values(line, y++, begin);
 	linker(begin);
-	coord_setter(begin);
+	coord_setter(begin, param);
 	return (begin);
 }
