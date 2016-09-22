@@ -6,7 +6,7 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 17:50:30 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/30 16:14:30 by abureau          ###   ########.fr       */
+/*   Updated: 2016/09/22 15:02:58 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ void		start_draw(t_fdf *map)
 		cursory = cursory->nexty;
 		while (tmp != NULL)
 		{
-			if (tmp->dotp.y <= HEIGHT && tmp->dotp.x <= WIDTH)
+			if (tmp->dotp.y <= HEIGHT + -(map->params.imgposy) &&
+					tmp->dotp.x <= WIDTH + -(map->params.imgposx))
 			{
 				if (tmp->nextx)
 					draw_segment(map, tmp, tmp->nextx);

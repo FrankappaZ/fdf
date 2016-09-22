@@ -5,34 +5,35 @@
 #                                                     +:+ +:+         +:+      #
 #    By: abureau <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2016/09/19 16:08:51 by abureau           #+#    #+#              #
-#    Updated: 2016/09/19 16:08:51 by abureau          ###   ########.fr        #
+#    Created: 2016/09/22 14:34:54 by abureau           #+#    #+#              #
+#    Updated: 2016/09/22 14:34:54 by abureau          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = fdf
 
-SRC = ./src/mprime.c \
+SRC = ./src/atoll.c \
+	./src/data.c \
+	./src/delta_init.c \
+	./src/get_center.c \
+	./src/main.c \
+	./src/parser.c \
+	./src/get_dist.c \
+	./src/lists.c \
 	./src/square_f.c \
 	./src/delta_pos.c \
-	./src/data.c \
-	./src/get_dist.c \
-	./src/list_func.c \
-	./src/atoll.c \
-	./src/color.c \
-	./src/catch.c \
-	./src/m_source.c \
-	./src/squaroot.c \
-	./src/lltoa_base.c \
-	./src/main.c \
-	./src/delta_init.c \
-	./src/bres_cases.c \
 	./src/definition.c \
 	./src/bresenham.c \
-	./src/rota.c \
-	./src/parser.c \
-	./src/lists.c \
-	./src/get_center.c
+	./src/squaroot.c \
+	./src/lltoa_base.c \
+	./src/m_source.c \
+	./src/list_func.c \
+	./src/bres_cases.c \
+	./src/catch.c \
+	./src/color.c \
+	./src/mprime.c \
+	./src/print.c \
+	./src/rota.c
 
 CC = gcc
 
@@ -40,17 +41,16 @@ OBJ = $(SRC:.c=.o)
 
 CFLAGS = -g -Wall -Wextra
 
-.ONESHELL:
 all: LIBCOMPILE $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $@ $^ -I libft/includes -L libft/ -lft -L mlx/ -lmlx -lXext -lX11 -lm -lbsd
+	$(CC) -o $@ $^ -I libft/includes -L libft/ -lft -L/usr/local/lib/ -I/usr/local/include -lmlx -framework OpenGL -framework AppKit
 
 LIBCOMPILE:
-	make -C libft/
+	 make -C libft/
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I libft/includes -I mlx -o $@ -c $<
+	$(CC) $(CFLAGS) -I libft/includes -o $@ -c $<
 
 clean:
 	rm -f $(OBJ)
@@ -59,6 +59,5 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	make -C libft/ fclean
-	./mlx/configure fclean
 
 re: fclean all

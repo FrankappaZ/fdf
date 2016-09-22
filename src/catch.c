@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   catch.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
+/*   By: abureau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/30 13:03:44 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/09/01 12:04:54 by abureau          ###   ########.fr       */
+/*   Created: 2016/09/22 15:09:22 by abureau           #+#    #+#             */
+/*   Updated: 2016/09/22 15:09:26 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/fdf.h"
 #include "../inc/rota.h"
 #include <signal.h>
-#include "../mlx/mlx.h"
+#include <mlx.h>
 #include <stdlib.h>
 
 /*
@@ -67,7 +67,7 @@ void		free_data_list(void)
 		free_mlx(map);
 	}
 	if (map)
-	isok = 1;
+		isok = 1;
 	exit(0);
 }
 

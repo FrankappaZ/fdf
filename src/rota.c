@@ -6,7 +6,7 @@
 /*   By: rcavadas <uid@student.42.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/09 16:35:06 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/09/02 15:28:06 by abureau          ###   ########.fr       */
+/*   Updated: 2016/09/22 14:52:40 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,6 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
-
-void		map_rotation(t_coord *elem, t_fdf *map)
-{
-	int	dist;
-	t_dot	center;
-
-	center = get_center(map);
-	dist = (int)get_dist(center.x, center.y, elem->dot.x, elem->dot.y);
-	if (dist < 0)
-	{
-		ft_putstrnb("dist : ", dist);
-		ft_putstrnb("0*0 : ", 0.*0.);
-		ft_putstrnb("elem.x : ", elem->dot.x);
-		ft_putstrnb("elem.y : ", elem->dot.y);
-	}
-	if (map)
-		if (elem)
-		{
-			if ((center.x == elem->dot.x) && (center.y == elem->dot.y))
-				return;
-				elem->dot.x = dist * cos(map->params.rad) + center.x;
-				elem->dot.y = dist * sin(map->params.rad) + center.y;
-		}
-}
 
 void		map_printer_p(t_coord *elem, t_fdf *map)
 {

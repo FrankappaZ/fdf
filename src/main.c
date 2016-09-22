@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abureau <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/20 18:30:48 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/09/12 17:14:08 by abureau          ###   ########.fr       */
+/*   Created: 2016/09/22 15:02:04 by abureau           #+#    #+#             */
+/*   Updated: 2016/09/22 15:02:31 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-
-static void	init_ptradr(t_fdf *map)
+static void		init_ptradr(t_fdf *map)
 {
 	static int	isinit = 0;
 
@@ -39,15 +38,14 @@ static t_fdf	*init_fdf(int fd)
 	ft_bzero(t_map, sizeof(t_fdf));
 	ft_bzero(&t_map->params, sizeof(t_params));
 	t_map->params.rad = RAD;
-	t_map->params.hor_pad = WIDTH/2;
-	t_map->params.ver_pad = HEIGHT/2;
+	t_map->params.hor_pad = WIDTH / 2;
+	t_map->params.ver_pad = HEIGHT / 2;
 	t_map->coord = parser(fd, begin, t_map->params);
 	t_map->params.spacing = SPACING;
 	init_ptradr(t_map);
 	coord_rotate(t_map, t_map->coord, get_center(t_map));
 	mprime(t_map);
 	list_mod(t_map, &set_last_elem);
-	//list_mod(t_map, &map_printer_p);
 	t_map->defcoord = init_def_coord(t_map);
 	init_mlx(t_map);
 	return (t_map);

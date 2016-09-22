@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/27 17:12:24 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/08/09 16:34:45 by rcavadas         ###   ########.fr       */
+/*   Updated: 2016/09/22 14:54:49 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_dot			rotate_point(t_fdf *map, t_dot dot, t_dot center)
 	ynew = dot.x * sn + dot.y * cs;
 	dot.x = xnew + center.x;
 	dot.y = ynew + center.y;
-	return(dot);
+	return (dot);
 }
 
 void			coord_rotate(t_fdf *map, t_coord *begin, t_dot center)
@@ -67,10 +67,10 @@ void			coord_rotate(t_fdf *map, t_coord *begin, t_dot center)
 		cursor = first_elem;
 		while (cursor->nextx)
 		{
-			cursor->dot = rotate_point(map ,cursor->dot, center);
+			cursor->dot = rotate_point(map, cursor->dot, center);
 			cursor = cursor->nextx;
 		}
-		cursor->dot = rotate_point(map ,cursor->dot, center);
+		cursor->dot = rotate_point(map, cursor->dot, center);
 		first_elem = first_elem->nexty;
 	}
 }

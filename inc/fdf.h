@@ -6,7 +6,7 @@
 /*   By: rcavadas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 18:32:27 by rcavadas          #+#    #+#             */
-/*   Updated: 2016/09/12 15:58:54 by abureau          ###   ########.fr       */
+/*   Updated: 2016/09/22 14:40:52 by abureau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,9 @@ typedef struct			s_params
 	float					rad;
 	int					gol_start : 1 ;
 	struct s_dot		eyes;
+	int					imgposx;
+	int					imgposy;
+	char				*map;
 }						t_params;
 
 typedef struct			s_win
