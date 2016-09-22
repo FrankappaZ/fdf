@@ -46,8 +46,7 @@ static int	keys(int keycode, t_fdf *tmp)
 	if (keycode == 5)
 		tmp->params.gol_start = 1;
 	if (keycode == 97)
-		coord_rotate(tmp, tmp->coord, get_center(tmp));
-
+		tmp->params.rad += RAD;
 	return (keycode);
 }
 
@@ -59,6 +58,7 @@ static int	my_key_func(int keycode, void *param)
 	keys(keycode, tmp);
 	ft_putstrnb("keycode : ", keycode);
 	coord_setter(tmp->coord, tmp->params);
+	coord_rotate(tmp, tmp->coord, get_center(tmp));
 	mprime(tmp);
 	mlx_clear_window(tmp->win.mlx, tmp->win.win);
 	mlx_destroy_image(tmp->win.mlx, tmp->win.img);
@@ -137,17 +137,15 @@ void		init_mlx(t_fdf *map)
 	map->win.win = mlx_new_window(map->win.mlx, WIDTH, HEIGHT, TITLE);
 	map->win.img = mlx_new_image(map->win.mlx, WIDTH, HEIGHT);
 	map->win.defimg = mlx_new_image(map->win.mlx, WIDTHD + 5, HEIGHTD + 5);
-	center_eyes(map);
 	start_draw(map);
 	draw_def(map);
-	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, 1 + map->params.hor_pad, 1 + map->params.ver_pad);
+	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.img, 1, 1);
 	mlx_put_image_to_window(map->win.mlx, map->win.win, map->win.defimg,
 			WIDTH - WIDTHD - 10, 30);
 	mlx_string_put(map->win.mlx, map->win.win, WIDTH - WIDTHD - 45,
 			20, CWHI, ft_itoa(map->LOW_RANGE));
 	mlx_string_put(map->win.mlx, map->win.win, WIDTH - WIDTHD - 45,
 			HEIGHTD + 10, CWHI, ft_itoa(map->HIGH_RANGE));
-	reloop(map);
 	mlx_hook(map->win.win, 2, 1, my_key_func, map);
 	mlx_loop(map->win.mlx);
 }

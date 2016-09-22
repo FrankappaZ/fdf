@@ -16,23 +16,20 @@
 static void	set_eyes_coord(t_fdf *map)
 {
 	static int	isok = 0;
-	t_dot		center;
 
-	ft_bzero(&center, sizeof(center));
 	if (!isok)
 	{
 		ft_putendl("set_eyes_coord");
-		map->params.eyes.x = WIDTH/2;
-		map->params.eyes.y = HEIGHT/2;
+		map->params.eyes.x = WIDTH / 4;
+		map->params.eyes.y = HEIGHT / 4;
 		map->params.eyes.z = 50;
 		isok = 1;
 	}
 	else if (isok == 1)
 	{
 		ft_putendl("reset_eyes_coord");
-		center = get_center(map);
-		map->params.eyes.x = WIDTH/2;
-		map->params.eyes.y = HEIGHT/2;
+		map->params.eyes.x = WIDTH / 4;
+		map->params.eyes.y = HEIGHT / 4;
 		map->params.eyes.z = 50;
 		isok = 2;
 	}

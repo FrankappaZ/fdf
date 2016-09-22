@@ -45,8 +45,8 @@ t_dot			rotate_point(t_fdf *map, t_dot dot, t_dot center)
 	float xnew;
 	float ynew;
 
-	sn = sin(RAD);
-	cs = cos(RAD);
+	sn = sin(map->params.rad);
+	cs = cos(map->params.rad);
 	dot.x -= center.x;
 	dot.y -= center.y;
 	xnew = dot.x * cs - dot.y * sn;

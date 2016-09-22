@@ -39,13 +39,12 @@ static t_fdf	*init_fdf(int fd)
 	ft_bzero(t_map, sizeof(t_fdf));
 	ft_bzero(&t_map->params, sizeof(t_params));
 	t_map->params.rad = RAD;
-	t_map->params.gol_start = 0;
 	t_map->params.hor_pad = WIDTH/2;
 	t_map->params.ver_pad = HEIGHT/2;
 	t_map->coord = parser(fd, begin, t_map->params);
-	ft_putendl("rotate start");
 	t_map->params.spacing = SPACING;
 	init_ptradr(t_map);
+	coord_rotate(t_map, t_map->coord, get_center(t_map));
 	mprime(t_map);
 	list_mod(t_map, &set_last_elem);
 	//list_mod(t_map, &map_printer_p);
